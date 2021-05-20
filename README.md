@@ -1,6 +1,10 @@
 # 명세표
 
-## 1. 장고
+
+
+## 1. PPT (...기획......;; 초초초초 간략)
+
+[google sheet](https://docs.google.com/presentation/d/1RvIF_9Ck6xDtpFSgp0mAvlZCa06VRVh04FstW-k7dxQ/edit?ts=60a36d48#slide=id.gd9446e4414_1_14)
 
 
 
@@ -8,45 +12,58 @@
 
 
 
-1. Movie
+## 1. ERD
 
-   | /            | 전체영화 목록 페이지 |
-   | ------------ | -------------------- |
-   | <movie_pk>/  | 상세 페이지          |
-   | recommended/ |                      |
+![image-20210520204937699](README.assets/image-20210520204937699.png)
 
-   
 
-2. Community
 
-| reviews/create                | 리뷰 생성          |
-| ----------------------------- | ------------------ |
-| reviews/                      | 전체 리뷰 목록     |
-| reviews/<review_pk>/          | 단일 리뷰 상세조회 |
-| reviews/<review_pk>/comments/ | 댓글 생성          |
-| reviews/<review_pk>/like/     | 좋아요             |
+
+
+
+
+## 2. API URL
+
+1. movies app
+
+| HTTP verb | URL 패턴                                | 설명                       |
+| --------- | --------------------------------------- | -------------------------- |
+| GET       | movies/                                 | 전체 영화 목록 조회 페이지 |
+| GET       | movies/recommended/                     | 영화 추천 페이지           |
+| GET       | movies/<movie_id>/                      | 영화 상세(detail) 페이지   |
+| POST      | movies/<movie_id>/likes/                | 영화 좋아요 / 취소         |
+| POST      | movies/<movie_id>/comment/              | 영화 댓글 생성             |
+| PUT       | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 수정             |
+| DELETE    | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 삭제             |
+
+
+
+2. posts app
+
+| HTTP verb | URL 패턴                              | 설명                         |
+| --------- | ------------------------------------- | ---------------------------- |
+| GET       | posts/                                | 전체 게시글 목록 조회 페이지 |
+| POST      | posts/                                | 게시글 생성                  |
+| GET       | posts/<post_id>/                      | 게시글 상세(detail) 페이지   |
+| PUT       | posts/<post_id>/                      | 게시글 수정                  |
+| DELETE    | posts/<post_id>/                      | 게시글 삭제                  |
+| POST      | posts/<post_id>/likes/                | 게시글 좋아요 / 취소         |
+| POST      | posts/<post_id>/comment/              | 게시글 댓글 생성             |
+| PUT       | posts/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
+| DELETE    | posts/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
 
 
 
 3. Accounts
 
-| signup/ | Form 표시 및 신규 사용자 생성 |
-| ------- | ----------------------------- |
-| login/  | Form 표시 및 기존 사용자 인증 |
-| logout/ | 인증된 사용자 인증 해제       |
+| HTTP verb | URL 패턴                 | 설명                          |
+| --------- | ------------------------ | ----------------------------- |
+| POST      | accounts/signup/         | 회원 가입                     |
+| POST      | accounts/api-token-auth/ | 로그인 (JWT 얻기)             |
+| -----     | -----                    | JWT 갱신 (공부해야함)         |
+| GET       | accounts/<user_name>/    | 회원 정보 상세(detail) 페이지 |
+| PUT       | accounts/<user_name>/    | 회원 정보 수정                |
+| DELETE    | accounts/<user_name>/    | 회원 탈퇴                     |
 
 
 
-
-
-2. ERD
-
-   ![image-20210520174732692](README.assets/image-20210520174732692.png)
-
-
-
-3. PPT (...기획......;;)
-
-   [google sheet](https://docs.google.com/presentation/d/1RvIF_9Ck6xDtpFSgp0mAvlZCa06VRVh04FstW-k7dxQ/edit?ts=60a36d48#slide=id.gd9446e4414_1_14)
-
-   
