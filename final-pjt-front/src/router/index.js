@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Movie from '../views/Movie.vue'
+import Movie from '../views/movies/Movie.vue'
 import Community from '../views/Community.vue'
+import Signup from '../views/accounts/Signup.vue'
+import Login from '../views/accounts/Login.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/movie',
+    path: '/movies',
     name: 'Movie',
     component: Movie
   },
@@ -15,6 +17,16 @@ const routes = [
     path: '/community',
     name: 'Community',
     component: Community
+  },
+  {
+    path: '/accounts/signup',
+    name: 'Signup',
+    component: Signup
+  },
+  {
+    path: '/accounts/login',
+    name: 'Login',
+    component: Login
   }
 ]
 
