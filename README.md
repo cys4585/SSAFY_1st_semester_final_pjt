@@ -35,3 +35,18 @@
 | login/  | Form 표시 및 기존 사용자 인증 |
 | logout/ | 인증된 사용자 인증 해제       |
 
+
+
+
+
+2. ERD
+
+   ![image-20210520174732692](README.assets/image-20210520174732692.png)
+
+
+
+3. PPT (...기획......;;)
+
+   [google sheet](https://docs.google.com/presentation/d/1RvIF_9Ck6xDtpFSgp0mAvlZCa06VRVh04FstW-k7dxQ/edit?ts=60a36d48#slide=id.gd9446e4414_1_14)
+
+   
