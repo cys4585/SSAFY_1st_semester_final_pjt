@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import router from '@/router'
+
 
 Vue.use(Vuex)
 
@@ -29,6 +31,31 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+    signup: function (context, credentials) {
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/accounts/signup/',
+        data: credentials,
+      })
+        .then(function () {
+          router.push({name: 'Login'})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    login: function (context, credentials) {
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/accounts/api-token-auth/',
+        data: credentials,
+      })
+        .then(function (res) {
+          console.log(res.data.token)
+          localStorage.setItem('jwt', res.data.token)
+        })
+        .catch(err => console.log(err))
     }
   },
   modules: {
