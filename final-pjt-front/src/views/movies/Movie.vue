@@ -20,16 +20,16 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Movie',
   components: {
-
     MovieCard
   },
   methods: {
-    ...mapActions(['getMoviesFromServer']),
+    ...mapActions(['getMoviesFromServer', 'checkLogin']),
   },
   computed: {
     ...mapState(['movies'])
   },
   created: function () {
+    this.checkLogin()
     this.getMoviesFromServer()
   }
 }

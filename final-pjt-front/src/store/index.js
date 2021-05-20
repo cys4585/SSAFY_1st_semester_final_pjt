@@ -25,7 +25,7 @@ export default new Vuex.Store({
         url: `${TMDB_URL}/movie/popular/?api_key=${TMDB_KEY}`,
       })
         .then(res => {
-          console.log(res.data.results)
+          // console.log(res.data.results)
           commit('SET_MOVIES', res.data.results)
         })
         .catch(err => {
@@ -51,11 +51,18 @@ export default new Vuex.Store({
         url: 'http://127.0.0.1:8000/accounts/api-token-auth/',
         data: credentials,
       })
-        .then(function (res) {
-          console.log(res.data.token)
+        .then(res => {
           localStorage.setItem('jwt', res.data.token)
+          router.push({name: 'Movie'})
         })
         .catch(err => console.log(err))
+    },
+    checkLogin: function (context) {
+      console.log(context)
+      const token = localStorage.getItem('jwt')
+      if (! token) {
+        router.push({ name: 'Login' })
+      }
     }
   },
   modules: {
