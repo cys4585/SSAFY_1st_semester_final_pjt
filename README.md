@@ -14,7 +14,7 @@
 
 ## 1. ERD
 
-![image-20210520204937699](README.assets/image-20210520204937699.png)
+![image-20210520211252198](README.assets/image-20210520211252198.png)
 
 
 
