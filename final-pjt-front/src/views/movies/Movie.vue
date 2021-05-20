@@ -9,9 +9,7 @@
       :movie="movie"
       />
     </b-card-group>
-    <h2>test</h2>
   </section>
-  <p>dddddddddddd</p>
 </div>
 </template>
 
