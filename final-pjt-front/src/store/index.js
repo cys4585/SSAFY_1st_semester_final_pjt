@@ -25,8 +25,8 @@ export default new Vuex.Store({
         url: `${TMDB_URL}/movie/popular/?api_key=${TMDB_KEY}`,
       })
         .then(res => {
-          console.log(res.data)
-          commit('SET_MOVIES', res.data)
+          console.log(res.data.results)
+          commit('SET_MOVIES', res.data.results)
         })
         .catch(err => {
           console.log(err)
