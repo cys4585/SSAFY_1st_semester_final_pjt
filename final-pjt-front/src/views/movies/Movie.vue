@@ -10,7 +10,6 @@
       />
     </b-card-group>
   </section>
-  <p>dddddddddddd</p>
 </div>
 </template>
 
