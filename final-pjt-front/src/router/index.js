@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Movie from '../views/movies/Movie.vue'
-import Community from '../views/Community.vue'
+import Community from '../views/community/Community.vue'
 import Signup from '../views/accounts/Signup.vue'
 import Login from '../views/accounts/Login.vue'
 
