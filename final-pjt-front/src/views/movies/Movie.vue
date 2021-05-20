@@ -11,6 +11,7 @@
     </b-card-group>
     <h2>test</h2>
   </section>
+  <p>dddddddddddd</p>
 </div>
 </template>
 
@@ -21,7 +22,7 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Movie',
   components: {
-    // 2. 등록하기
+
     MovieCard
   },
   methods: {
