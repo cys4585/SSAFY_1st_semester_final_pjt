@@ -2,7 +2,6 @@
   <div>
     <img :src="srcUrl" alt="poster_path">
     <p>{{ movie.title }}</p>
-    <p>{{ movie.overview }}</p>
   </div>
 </template>
 

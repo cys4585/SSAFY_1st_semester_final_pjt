@@ -1,17 +1,17 @@
 <template>
 <div>
-  <h1>Movie Page</h1>
-  <section>
-    <b-card-group row row-cols-1 row-cols-md-2 g-4>
-      <MovieCard
-      v-for="(movie, idx) in movies"
-      :key="idx"
-      :movie="movie"
-      />
-    </b-card-group>
-  </section>
+    <h1>Movie Page</h1>
+    <section>
+      <b-card-group row row-cols-1 row-cols-md-2 g-4>
+        <MovieCard
+        v-for="(movie, idx) in movies"
+        :key="idx"
+        :movie="movie"
+        />
+      </b-card-group>
+    </section>
 </div>
-</template>
+</template> 
 
 <script>
 import MovieCard from '@/components/MovieCard.vue'
@@ -20,16 +20,16 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'Movie',
   components: {
+
     MovieCard
   },
   methods: {
-    ...mapActions(['getMoviesFromServer', 'checkLogin']),
+    ...mapActions(['getMoviesFromServer']),
   },
   computed: {
     ...mapState(['movies'])
   },
   created: function () {
-    this.checkLogin()
     this.getMoviesFromServer()
   }
 }
