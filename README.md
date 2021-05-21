@@ -70,5 +70,26 @@
 - git 순서
   - git add .
   - git commit -m " ~~~ "
-  - git pull
+  - git pull (영수가 push한게 있으면 pull 꼭!!!)
   - git push
+
+
+
+## 4. 각자 맡은 작업
+
+영수: 백엔드 + 프론트엔드
+
+보람: 프론트엔드 + HTML/CSS
+
+
+
+## 5. 일정
+
+1) 전체페이지 만들기
+
+2) 페이지별 필요한 데이터 확인
+
+3) movie 페이지 디자인 
+
+
+
