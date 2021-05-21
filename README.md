@@ -34,19 +34,19 @@
 
 
 
-2. posts app
+2. community app
 
-| HTTP verb | URL 패턴                              | 설명                         |
-| --------- | ------------------------------------- | ---------------------------- |
-| GET       | posts/                                | 전체 게시글 목록 조회 페이지 |
-| POST      | posts/                                | 게시글 생성                  |
-| GET       | posts/<post_id>/                      | 게시글 상세(detail) 페이지   |
-| PUT       | posts/<post_id>/                      | 게시글 수정                  |
-| DELETE    | posts/<post_id>/                      | 게시글 삭제                  |
-| POST      | posts/<post_id>/likes/                | 게시글 좋아요 / 취소         |
-| POST      | posts/<post_id>/comment/              | 게시글 댓글 생성             |
-| PUT       | posts/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
-| DELETE    | posts/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
+| HTTP verb | URL 패턴                                  | 설명                         |
+| --------- | ----------------------------------------- | ---------------------------- |
+| GET       | community/                                | 전체 게시글 목록 조회 페이지 |
+| POST      | community/                                | 게시글 생성                  |
+| GET       | community/<post_id>/                      | 게시글 상세(detail) 페이지   |
+| PUT       | community/<post_id>/                      | 게시글 수정                  |
+| DELETE    | community/<post_id>/                      | 게시글 삭제                  |
+| POST      | community/<post_id>/likes/                | 게시글 좋아요 / 취소         |
+| POST      | community/<post_id>/comment/              | 게시글 댓글 생성             |
+| PUT       | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
+| DELETE    | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
 
 
 

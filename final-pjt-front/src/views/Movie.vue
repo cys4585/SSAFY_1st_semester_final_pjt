@@ -1,24 +1,23 @@
 <template>
 <div>
   <h1>Movie Page</h1>
-  <MovieList/>
+  |
+  <router-link :to="{ name: 'MovieList' }">MovieList</router-link> |
+  <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
+  <router-view/>
+
 </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-import MovieList from '@/components/movies/MovieList.vue'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Movie',
   components: {
-    MovieList,
   },
   methods: {
     ...mapActions(['getMoviesFromServer', 'checkLogin']),
-  },
-  computed: {
-    ...mapState(['movies'])
   },
   created: function () {
     this.checkLogin()

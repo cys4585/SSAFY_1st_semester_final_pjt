@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h3>MovieCommentForm.vue</h3>
+    <h2>Recommend.vue</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MovieCommentForm',
+  name: 'Recommend',
 }
 </script>
 

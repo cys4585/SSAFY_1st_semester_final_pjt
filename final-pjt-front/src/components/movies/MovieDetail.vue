@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1>Movie Detail Page</h1>
+    <h2>MovieDetail.vue</h2>
     {{ movie }}
     <div>
-      <MovieCommentList/>
       <MovieCommentForm/>
+      <MovieCommentList/>
     </div>
   </div>
 </template>
@@ -18,10 +18,6 @@ export default {
   components: {
     MovieCommentList,
     MovieCommentForm,
-  },
-  data: function () {
-    return {
-    }
   },
   computed: {
     movie: function () {

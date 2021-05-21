@@ -2,13 +2,12 @@
   <div id="app">
     <div id="nav">
       <span>
-        <router-link :to="{ name: 'Movie' }">Movie</router-link> |
-        <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
-        <router-link :to="{ name: 'Community' }">Community</router-link> |
+        |
+        <router-link :to="{ name: 'MovieList' }">Movie</router-link> |
+        <router-link :to="{ name: 'PostList' }">Community</router-link> |
       </span>
       <span>
-        <router-link :to="{ name: 'Signup' }">Signup</router-link> |
-        <router-link :to="{ name: 'Login' }">Login</router-link> |
+        <router-link :to="{ name: 'Login' }">Account</router-link> |
       </span>
     </div>
     <router-view/>

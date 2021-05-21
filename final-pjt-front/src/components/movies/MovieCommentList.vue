@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>MovieCommentList.vue</h2>
+    <h3>MovieCommentList.vue</h3>
   </div>
 </template>
 
