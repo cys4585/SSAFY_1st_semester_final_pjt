@@ -12,7 +12,7 @@
 
 
 
-## 1. ERD
+## 2. ERD
 
 ![image-20210520211252198](README.assets/image-20210520211252198.png)
 
@@ -22,14 +22,14 @@
 
 
 
-## 2. API URL
+## 3. API URL
 
 1. movies app
 
 | HTTP verb | URL 패턴                                | 설명                       |
 | --------- | --------------------------------------- | -------------------------- |
 | GET       | movies/                                 | 전체 영화 목록 조회 페이지 |
-| GET       | movies/recommended/                     | 영화 추천 페이지           |
+| GET       | movies/recommend/                       | 영화 추천 페이지           |
 | GET       | movies/<movie_id>/                      | 영화 상세(detail) 페이지   |
 | POST      | movies/<movie_id>/likes/                | 영화 좋아요 / 취소         |
 | POST      | movies/<movie_id>/comment/              | 영화 댓글 생성             |
