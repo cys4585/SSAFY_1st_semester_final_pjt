@@ -7,7 +7,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex'
-import MovieList from '@/components/MovieList.vue'
+import MovieList from '@/components/movies/MovieList.vue'
 
 export default {
   name: 'Movie',

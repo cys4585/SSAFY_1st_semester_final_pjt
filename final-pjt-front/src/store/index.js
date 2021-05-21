@@ -68,8 +68,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(err))
     },
-    checkLogin: function (context) {
-      console.log(context)
+    checkLogin: function () {
       const token = localStorage.getItem('jwt')
       if (! token) {
         router.push({ name: 'Login' })

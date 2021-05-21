@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import MovieCommentList from '@/components/MovieCommentList.vue'
-import MovieCommentForm from '@/components/MovieCommentForm.vue'
+import MovieCommentList from '@/components/movies/MovieCommentList.vue'
+import MovieCommentForm from '@/components/movies/MovieCommentForm.vue'
 
 export default {
   name: 'MovieDetail',

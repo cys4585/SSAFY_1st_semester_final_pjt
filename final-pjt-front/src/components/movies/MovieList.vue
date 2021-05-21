@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import MovieCard from '@/components/MovieCard.vue'
+import MovieCard from '@/components/movies/MovieCard.vue'
 import { mapState } from 'vuex'
 
 export default {
