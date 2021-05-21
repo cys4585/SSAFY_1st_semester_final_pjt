@@ -63,10 +63,18 @@
 
 
 
+- 항상 git은 vsCode로 관리합시다. (conflict 났을 때 merge를 쉽게 할 수 있음)
+
 - git 순서
   - git add .
   - git commit -m " ~~~ "
   - git pull (영수가 push한게 있으면 pull 꼭!!!)
+  - git push
+
+- conflict(충돌) 나는 경우 
+  - merge를 하고 
+  - git add .
+  - git commit -m "merge : ~~~~"
   - git push
 
 
