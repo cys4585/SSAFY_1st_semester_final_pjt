@@ -67,3 +67,8 @@
 
 
 
+- git 순서
+  - git add .
+  - git commit -m " ~~~ "
+  - git pull
+  - git push
