@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-link :to="{ name: 'MovieList' }">mainlogo</router-link>
+    <!-- <router-link :to="{ name: 'MovieList' }">mainlogo</router-link> -->
       <div id="nav">
         <span>
           <router-link :to="{ name: 'MovieList' }">Movie</router-link> |
@@ -24,12 +24,13 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0);
 }
 
 #nav a {
   font-weight: bold;
-  color: #53616e;
+  color: #6a7d91;
 }
 
 #nav a.router-link-exact-active {
