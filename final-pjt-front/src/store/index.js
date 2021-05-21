@@ -12,11 +12,33 @@ const TMDB_KEY = '59dde7bd14865cb45e54cd51d83d7ab7'
 export default new Vuex.Store({
   state: {
     movies: [],
+    posts: [],
+  },
+  getters: {
+    getMovieById: function (state) {
+      // console.log('getMovieById 실행')
+      return function (movieId) {
+        // console.log(movieId)
+        // console.log(state.movies)
+        // console.log(state.movies.find(movie => movie.id === id))
+        return state.movies.find(movie => movie.id === movieId)
+      }
+    },
+    getPostById: function (state) {
+      // console.log('getPostById 실행')
+      return function (postId) {
+        // console.log(postId)
+        return state.posts.find(post => post.id === postId)
+      }
+    }
   },
   mutations: {
     SET_MOVIES: function (state, movies) {
       state.movies = movies
-    }
+    },
+    SET_POSTS : function (state, posts) {
+      state.posts = posts
+    },
   },
   actions: {
     getMoviesFromServer: function ({ commit }) {
@@ -53,16 +75,38 @@ export default new Vuex.Store({
       })
         .then(res => {
           localStorage.setItem('jwt', res.data.token)
-          router.push({name: 'Movie'})
+          router.push({name: 'MovieList'})
         })
         .catch(err => console.log(err))
     },
-    checkLogin: function (context) {
-      console.log(context)
+    checkLogin: function () {
       const token = localStorage.getItem('jwt')
       if (! token) {
         router.push({ name: 'Login' })
       }
+    },
+    goMovieDetail: function (context, movieId) {
+      // console.log(movieId)
+      router.push({ name: 'MovieDetail', params: { movieId } })
+    },
+    getPostsFromServer: function ({ commit }) {
+      const token = localStorage.getItem('jwt')
+      axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/community/',
+        headers: {
+          Authorization: `JWT ${token}`
+        },
+      })
+        .then(res => {
+          // console.log(res)
+          commit('SET_POSTS', res.data)
+        })
+        .catch(err => {console.log(err)})
+    },
+    goPostDetail: function (context, postId) {
+      // console.log(postId)
+      router.push({ name: 'PostDetail', params: { postId }})
     }
   },
   modules: {

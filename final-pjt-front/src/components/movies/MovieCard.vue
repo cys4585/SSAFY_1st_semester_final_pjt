@@ -1,11 +1,14 @@
 <template>
-  <div>
+  <div @click="goMovieDetail(movie.id)">
+    <h3>MovieCard.vue</h3>
     <img :src="srcUrl" alt="poster_path">
     <p>{{ movie.title }}</p>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'MovieCard',
   props: {
@@ -15,9 +18,12 @@ export default {
   },
   computed: {
     srcUrl: function () {
-      console.log(this.movie.poster_path)
+      // console.log(this.movie.poster_path)
       return 'https://image.tmdb.org/t/p/w500' + this.movie.poster_path
     }
+  },
+  methods: {
+    ...mapActions(['goMovieDetail']),
   }
 }
 </script>
