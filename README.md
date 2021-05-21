@@ -63,22 +63,6 @@
 
 
 
-- 항상 git은 vsCode로 관리합시다. (conflict 났을 때 merge를 쉽게 할 수 있음)
-
-- git 순서
-  - git add .
-  - git commit -m " ~~~ "
-  - git pull (영수가 push한게 있으면 pull 꼭!!!)
-  - git push
-
-- conflict(충돌) 나는 경우 
-  - merge를 하고 
-  - git add .
-  - git commit -m "merge : ~~~~"
-  - git push
-
-
-
 ## 4. 각자 맡은 작업
 
 영수: 백엔드 + 프론트엔드
@@ -121,4 +105,64 @@
 - 0528 (금)
 
   - 발표
+
+
+
+## *프로젝트 중 공부한 내용들
+
+
+
+### Git
+
+- 항상 git은 vsCode로 관리합시다. (conflict 났을 때 merge를 쉽게 할 수 있음)
+
+- git 순서
+  - git add .
+  - git commit -m " ~~~ "
+  - git pull (local에 수정된 내용이 있다면 pull 전에 commit을 해줘야 한다.)
+  - git push (push 하기 전에 git repository에 pull할 게 있다면 pull 해줘야 한다.)
+
+- pull 할 때 conflict(충돌) 발생한 경우 
+  - merge 하고 
+  - git add .
+  - git commit -m "merge : ~~~~"
+  - git push
+
+
+
+### 직렬화 & 역직렬화
+
+- 직렬화(serializing) : python data -> JSON
+
+- 역직렬화(deserializing) : JSON -> python data
+
+- ```python
+  # django restframework에서 제공하는 ModelSerializer 사용했을 때
+  
+  # 직렬화 (serializing)
+  movies = Movie.objects.all()	# Python data 형태 (QuerySet)
+  serializer = MovieSerializer(movies, many=True) 	# DB의 Movie table에서 모든 table들을 꺼내 직렬화한다.(JSON 형태로 만들어 준다.)
+  													# QuerySet인 경우 -> many=True 를 해줘야한다.
+      												# 단순히 Model instance인 경우 -> X
+  # 역직렬화 (deserializing)
+  data = request.data	# JSON 형태
+  serializer = MovieSerializer(data=data)	# JSON 형태의 데이터를 역직렬화한다. (Python data 형태로 만들어준다.)
+  if serializer.is_valid():	# 유효성 검사
+      serializer.save()	# 역직렬화된 데이터(Python data 형태)를 DB의 Movie table에 저장한다.
+      # serializer.save(user=request.user) 	# user를 넣어줘야 하는 경우 바로 넣어줄 수 있다.
+  # db 수정 한번에 하는 법
+  movie = Movie.objects.get(pk=1)	# model instance
+  data = request.data		# JSON 형태
+  serializer = MovieSerializer(movie, data=data)	# movie를 수정 (data로)
+  if serializer.is_valie():	# 유효성 검사
+      serializer.save()	# 저장
+  ```
+
+- 궁금한 부분
+
+  - 역직렬화 할 때 
+    - JSON data를 여러개를 (배열 형태로) 받아왔다면, 저장하는 법이 다른가?
+      - many=True를 써서 한번에 저장하나?
+      - 아님 알아서 그냥 저장이 되나?
+      - 아님 하나씩 꺼내서 저장을 해줘야 하나?
 
