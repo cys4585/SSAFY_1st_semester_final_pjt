@@ -3,6 +3,7 @@
     <div id="nav">
       <span>
         <router-link :to="{ name: 'Movie' }">Movie</router-link> |
+        <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
         <router-link :to="{ name: 'Community' }">Community</router-link> |
       </span>
       <span>

@@ -87,7 +87,7 @@
 
 - 0521 (금)
 
-  - page 구조 잡기(vue) / 페이지별 필요한 데이터 확인 및 구현(django)
+  - page 구조 잡기(vue) / 페이지별 필요한 데이터 확인 및 구현(django) / 모델링 완성
 
   - movie 페이지 디자인, signup, login 페이지 디자인
 

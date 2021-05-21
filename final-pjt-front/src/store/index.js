@@ -13,6 +13,17 @@ export default new Vuex.Store({
   state: {
     movies: [],
   },
+  getters: {
+    getMovieById: function (state) {
+      // console.log('getMovieById 실행')
+      return function (id) {
+        // console.log(id)
+        // console.log(state.movies)
+        // console.log(state.movies.find(movie => movie.id === id))
+        return state.movies.find(movie => movie.id === id)
+      }
+    },
+  },
   mutations: {
     SET_MOVIES: function (state, movies) {
       state.movies = movies
@@ -63,6 +74,10 @@ export default new Vuex.Store({
       if (! token) {
         router.push({ name: 'Login' })
       }
+    },
+    goMovieDetail: function (context, movieId) {
+      // console.log(movieId)
+      router.push({ name: 'MovieDetail', params: { movieId } })
     }
   },
   modules: {

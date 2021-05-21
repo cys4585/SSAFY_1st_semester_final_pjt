@@ -1,26 +1,18 @@
 <template>
 <div>
   <h1>Movie Page</h1>
-  <section>
-    <b-card-group row row-cols-1 row-cols-md-2 g-4>
-      <MovieCard
-      v-for="(movie, idx) in movies"
-      :key="idx"
-      :movie="movie"
-      />
-    </b-card-group>
-  </section>
+  <MovieList/>
 </div>
 </template>
 
 <script>
-import MovieCard from '@/components/MovieCard.vue'
 import { mapActions, mapState } from 'vuex'
+import MovieList from '@/components/MovieList.vue'
 
 export default {
   name: 'Movie',
   components: {
-    MovieCard
+    MovieList,
   },
   methods: {
     ...mapActions(['getMoviesFromServer', 'checkLogin']),
