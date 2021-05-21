@@ -8,6 +8,7 @@
         :key="idx"
         :movie="movie"
         />
+        알겠습니다.
       </b-card-group>
     </section>
 </div>
