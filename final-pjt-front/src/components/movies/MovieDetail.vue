@@ -1,7 +1,8 @@
 <template>
   <div>
     <h2>MovieDetail.vue</h2>
-    {{ movie }}
+    <h3>{{ movie.title }}</h3>
+    <p>{{ movie.overview }}</p>
     <div>
       <MovieCommentForm/>
       <MovieCommentList/>

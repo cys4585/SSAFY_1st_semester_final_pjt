@@ -1,6 +1,16 @@
 <template>
   <div>
     <h2>PostList.vue</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
+          <!--좋아요 수 <th scope="col">Likes</th> -->
+        </tr>
+      </thead>
+    </table>
     <PostCard
       v-for="(post, idx) in posts"
       :key="idx"

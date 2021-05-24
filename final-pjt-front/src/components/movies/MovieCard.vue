@@ -1,8 +1,10 @@
 <template>
-  <div @click="goMovieDetail(movie.id)">
-    <h3>MovieCard.vue</h3>
-    <img :src="srcUrl" alt="poster_path">
-    <p>{{ movie.title }}</p>
+  <div col class="center">
+    <b-card @click="goMovieDetail(movie.id)" id="movie-card">
+      <!-- <h3>MovieCard.vue</h3> -->
+      <img :src="srcUrl" alt="poster_path" class="w-100">
+      <p>{{ movie.title }}</p>
+    </b-card>
   </div>
 </template>
 
@@ -29,5 +31,15 @@ export default {
 </script>
 
 <style>
+.center {
+   text-align: center;
+}
 
+#movie-card {
+  /* border: solid; */
+  max-width: 18rem;
+  max-height: 30rem;
+  background-color: black;
+  cursor: pointer;
+}
 </style>
