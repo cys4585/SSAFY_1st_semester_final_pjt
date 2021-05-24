@@ -5,7 +5,7 @@
     점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
     <!-- <button class="btn btn-warning" @click="">수정</button> -->
     <button 
-      v-if="username === comment.username"
+      v-if="loginUsername === comment.username"
       class="btn btn-danger" 
       @click="deleteComment"
       >
@@ -28,7 +28,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['username'])
+    ...mapState(['loginUsername'])
   },
   methods: {
     deleteComment: function () {

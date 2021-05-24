@@ -25,7 +25,7 @@ def movie_list(request):
 @api_view(['GET', 'POST'])
 @authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
-def create_comment(request, movie_id):
+def comment_list_create(request, movie_id):
     if request.method == 'GET':
         comments = MovieComment.objects.filter(movie_id=movie_id)
         serializer = MovieCommentSerializer(comments, many=True)
@@ -36,6 +36,21 @@ def create_comment(request, movie_id):
         if serializer.is_valid(raise_exception=True):
             serializer.save(user=request.user, movie=movie)
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+
+
+@api_view(['PUT', 'DELETE'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def update_delete_comment(request, movie_id, comment_id):
+    if not request.user.movie_comments.filter(pk=comment_id).exists():
+        return Response({'detail': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
+
+    if request.method == 'PUT':
+        pass
+    else:
+        comment = get_object_or_404(MovieComment, pk=comment_id)
+        comment.delete()
+        return Response({'delete': f'{comment_id}번 댓글 삭제'}, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST'])
@@ -60,18 +75,3 @@ def like(request, movie_id):
         'count': movie.like_users.count(),
     }
     return JsonResponse(data=like_status)
-
-
-@api_view(['PUT', 'DELETE'])
-@authentication_classes([JSONWebTokenAuthentication])
-@permission_classes([IsAuthenticated])
-def update_delete_comment(request, movie_id, comment_id):
-    if not request.user.movie_comments.filter(pk=comment_id).exists():
-        return Response({'detail': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
-
-    if request.method == 'PUT':
-        pass
-    else:
-        comment = get_object_or_404(MovieComment, pk=comment_id)
-        comment.delete()
-        return Response({'delete': f'{comment_id}번 댓글 삭제'}, status=status.HTTP_204_NO_CONTENT)

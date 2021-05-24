@@ -8,6 +8,8 @@ import MovieDetail from '@/components/movies/MovieDetail.vue'
 
 import Community from '@/views/Community.vue'
 import PostList from '@/components/community/PostList.vue'
+import PostCreateForm from '@/components/community/PostCreateForm.vue'
+import PostUpdateForm from '@/components/community/PostUpdateForm.vue'
 import PostDetail from '@/components/community/PostDetail.vue'
 
 import Account from '@/views/Account.vue'
@@ -30,7 +32,9 @@ const routes = [
     path: '/community', component: Community,
     children: [
       { path: '', name: 'PostList', component: PostList },
+      { path: 'post', name: 'PostCreateForm', component: PostCreateForm },
       { path: ':postId', name: 'PostDetail', component: PostDetail },
+      { path: ':postId/post', name: 'PostUpdateForm', component: PostUpdateForm, },
     ]
   },
   {

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>PostList.vue</h2>
+    <button class="btn btn-primary" @click="postForm">New Post</button>
     <table class="table">
       <thead>
         <tr>
@@ -31,6 +32,11 @@ export default {
     posts : function () {
       return this.$store.state.posts
     }
+  },
+  methods: {
+    postForm: function () {
+      this.$router.push({ name: 'PostCreateForm' })
+    },
   },
 }
 </script>

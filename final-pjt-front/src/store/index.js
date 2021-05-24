@@ -10,12 +10,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
-    username: null,
+    loginUsername: null,
     movies: null,
     movieComments: [],
     movieLikeStatus: null,
     movieLikeCount: null,
     posts: [],
+    post: {},
+    postComments: [],
   },
   getters: {
     getMovieById: function (state) {
@@ -37,13 +39,10 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USERNAME: function (state, username) {
-      state.username = username
+      state.loginUsername = username
     },
     SET_MOVIES: function (state, movies) {
       state.movies = movies
-    },
-    SET_POSTS: function (state, posts) {
-      state.posts = posts
     },
     SET_MOVIE_COMMENTS: function (state, comments) {
       state.movieComments = comments
@@ -59,6 +58,25 @@ export default new Vuex.Store({
       const comment = state.movieComments.find(comment => comment.id === commentId)
       const idx = state.movieComments.indexOf(comment)
       state.movieComments.splice(idx, 1)
+    },
+    SET_POSTS: function (state, posts) {
+      state.posts = posts
+    },
+    CREATE_POST: function (state, post) {
+      state.posts.push(post)
+    },
+    UPDATE_POST: function (state, updatedPost) {
+      const idx = state.posts.findIndex(post => post.id === updatedPost.id)
+      state.posts[idx] = updatedPost
+    },
+    DELETE_POST: function (state, postId) {
+      state.posts.splice(postId, 1)
+    },
+    SET_POST_COMMENT_LIST: function (state, comments) {
+      state.postComments = comments
+    },
+    CREATE_POST_COMMENT: function (state, comment) {
+      state.postComments.push(comment)
     },
   },
   actions: {
@@ -200,12 +218,11 @@ export default new Vuex.Store({
         })
     },
     getPostsFromServer: function ({ commit }) {
-      const token = localStorage.getItem('jwt')
       axios({
         method: 'get',
         url: 'http://127.0.0.1:8000/community/',
         headers: {
-          Authorization: `JWT ${token}`
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
         },
       })
         .then(res => {
@@ -214,9 +231,103 @@ export default new Vuex.Store({
         })
         .catch(err => {console.log(err)})
     },
+    createPost: function ({ commit }, { title, content }) {
+      axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/community/',
+        data: {
+          title,
+          content,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          // console.log(res.data)
+          commit('CREATE_POST', res.data)
+          router.push({ name: 'PostList' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
     goPostDetail: function (context, postId) {
       // console.log(postId)
       router.push({ name: 'PostDetail', params: { postId }})
+    },
+    updatePost: function ({ commit }, { postId, title, content }) {
+      axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/community/${postId}/`,
+        data: {
+          title,
+          content,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          // console.log(res.data)
+          commit('UPDATE_POST', res.data)
+          router.push({ name: 'PostDetail', params: { postId }})
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    deletePost: function ({ commit }, postId) {
+      axios({
+        method: 'delete',
+        url: `http://127.0.0.1:8000/community/${postId}/`,
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(function () {
+          commit('DELETE_POST', postId)
+          router.push({ name: 'PostList' })
+
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getPostCommentListFromServer: function ({ commit }, postId) {
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/community/${postId}/comment/`,
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          console.log(res.data)
+          commit('SET_POST_COMMENT_LIST', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    createPostComment: function ({ commit }, { postId, content }) {
+      axios({
+        method: 'post',
+        url: `http://127.0.0.1:8000/community/${postId}/comment/`,
+        data: {
+          content,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          // console.log(res.data)
+          commit('CREATE_POST_COMMENT', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   modules: {
