@@ -4,9 +4,9 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Title</th>
-          <th scope="col">Content</th>
+          <th scope="col" class="post">#</th>
+          <th scope="col" class="post">Title</th>
+          <th scope="col" class="post">Content</th>
           <!--좋아요 수 <th scope="col">Likes</th> -->
         </tr>
       </thead>
@@ -36,5 +36,7 @@ export default {
 </script>
 
 <style>
-
+.post {
+  color: #E1DCD9;
+}
 </style>

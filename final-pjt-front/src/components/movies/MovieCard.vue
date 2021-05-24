@@ -1,5 +1,5 @@
 <template>
-  <div col class="center">
+  <div col class="center" id="cardhover">
     <b-card @click="goMovieDetail(movie.id)" id="movie-card">
       <!-- <h3>MovieCard.vue</h3> -->
       <img :src="srcUrl" alt="poster_path" class="w-100">
@@ -38,8 +38,14 @@ export default {
 #movie-card {
   /* border: solid; */
   max-width: 18rem;
-  max-height: 30rem;
+  max-height: 28rem;
+  margin-bottom: 20px;
   background-color: black;
   cursor: pointer;
 }
+
+#cardhover :hover {
+  border-block-color: #D3B7D8;
+}
+
 </style>
