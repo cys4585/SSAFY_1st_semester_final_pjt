@@ -1,12 +1,36 @@
 <template>
   <div>
     <h3>MovieCommentList.vue</h3>
+    <MovieCommentCard
+      v-for="(comment, idx) in commentList"
+      :key="idx"
+      :comment="comment"
+      :movieId="movieId"
+    />
   </div>
 </template>
 
 <script>
+import MovieCommentCard from '@/components/movies/MovieCommentCard.vue'
+
 export default {
   name: 'MovieCommentList',
+  components: {
+    MovieCommentCard,
+  },
+  props: {
+    movieId: {
+      type: Number
+    }
+  },
+  created: function () {
+    this.$store.dispatch('getMovieCommentListFromServer', this.movieId)
+  },
+  computed: {
+    commentList: function () {
+      return this.$store.state.movieComments
+    }
+  },
 }
 </script>
 
