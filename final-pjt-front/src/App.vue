@@ -1,40 +1,15 @@
 <template>
   <div id="app">
-    <!-- 탭 네브바 -->
-    <ul class="nav nav-pills">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Movie</a>
-        <ul class="dropdown-menu">
-          <li><router-link :to="{ name: 'MovieList' }" class="dropdown-item">MovieList</router-link></li>
-          <li><router-link :to="{ name: 'Recommend' }" class="dropdown-item">Recommend</router-link></li>
-        </ul>
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Community</a>
-        <ul class="dropdown-menu">
-          <li><router-link :to="{ name: 'PostList' }" class="dropdown-item">PostList</router-link></li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
-        <ul class="dropdown-menu">
-          <li><router-link :to="{ name: 'Login' }" class="dropdown-item">Login</router-link></li>
-        </ul>
-      </li>
-    </ul>
-    
-      <!-- 일반 네브바
-      <div id="nav">
-        <span>
-          <router-link :to="{ name: 'MovieList' }">Movie</router-link> |
-          <router-link :to="{ name: 'PostList' }">Community</router-link> |
-        </span>
-        <span>
-          <router-link :to="{ name: 'Login' }">Account</router-link> |
-        </span>
-      </div> -->
-      <router-view/>
+    <nav class="navbar">
+      <!-- Navbar content -->
+      <span class="nav text-decoration-none" id="nav-tab" role="tablist">
+        <li class="nav-link active" id="textcolor" data-bs-toggle="tab" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><router-link :to="{ name: 'MovieList' }" class="deco">MovieList</router-link></li>
+        <li class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><router-link :to="{ name: 'Recommend' }">Recommend</router-link></li>
+        <li class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><router-link :to="{ name: 'PostList' }">Community</router-link></li>
+        <li class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><router-link :to="{ name: 'Login' }">Login</router-link></li>
+      </span>
+    </nav>
+    <router-view/>
   </div>
 </template>
 
@@ -47,33 +22,15 @@
   color: #6a7d91;
   margin-left: 60px;
   margin-right: 60px;
-
 }
 
-#nav {
-  padding: 20px;
+.navbar {
   background-color: black;
+  margin-bottom: 30px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #6a7d91;
-}
-
-#nav a.router-link-exact-active {
-  color: #ff0000;
-}
-.nav {
-  margin-bottom: 50px;
-}
-.nav-item a {
-  font-size: 20px;
+#textcolor {
   color: #D3B7D8;
-  text-decoration: none;
 }
 
-
-.dropdown-menu {
-  background-color: black;
-}
 </style>
