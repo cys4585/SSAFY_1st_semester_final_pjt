@@ -35,9 +35,11 @@ export default {
 </script>
 
 <style>
+
 #lgoin-background {
   background-color: rgb(175, 175, 175, 0.5);
   color: black;
+  padding: 30px;
 }
 
 </style>

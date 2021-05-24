@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <h2>MovieList.vue</h2>
+  <div class="center">
+    <!-- <h2>MovieList.vue</h2> -->
     <section>
-      <b-card-group row row-cols-1 row-cols-md-6 g-4>
+      <b-card-group row row-cols-2 row-cols-md-2 g-4>
         <MovieCard
           v-for="(movie, idx) in movies"
           :key="idx"
@@ -29,5 +29,8 @@ export default {
 </script>
 
 <style>
+.center {
+  margin: auto;
+}
 
 </style>

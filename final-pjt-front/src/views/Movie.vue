@@ -1,9 +1,9 @@
 <template>
 <div>
-  <h1>Movie Page</h1>
+  <!-- <h1>Movie Page</h1>
   |
   <router-link :to="{ name: 'MovieList' }">MovieList</router-link> |
-  <router-link :to="{ name: 'Recommend' }">Recommend</router-link> |
+  <router-link :to="{ name: 'Recommend' }">Recommend</router-link> | -->
   <router-view/>
 
 </div>
