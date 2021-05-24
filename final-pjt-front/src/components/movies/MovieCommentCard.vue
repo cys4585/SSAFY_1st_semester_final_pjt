@@ -2,7 +2,7 @@
   <div>
     <h4>MovieCommentCard.vue</h4>
     <!-- {{ comment }} -->
-    {{ comment.username }}| {{ comment.comment }}
+    점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
     <!-- <button class="btn btn-warning" @click="">수정</button> -->
     <button 
       v-if="username === comment.username"

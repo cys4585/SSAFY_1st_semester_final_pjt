@@ -130,12 +130,13 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    createMovieComment: function ({ commit }, { movieId, comment }) {
+    createMovieComment: function ({ commit }, { movieId, score, comment }) {
       // console.log(movieId, comment)
       axios({
         method: 'post',
         url: `http://127.0.0.1:8000/movies/${movieId}/comment/`,
         data: {
+          score,
           comment,
         },
         headers: {

@@ -9,8 +9,8 @@ from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
-from .models import Review
-from .serializers import ReviewSerializer
+from .models import Post
+from .serializers import PostSerializer
 
 
 # Create your views here.
@@ -19,8 +19,8 @@ from .serializers import ReviewSerializer
 @permission_classes([IsAuthenticated])
 def post_list_create(request):
     if request.method == 'GET':
-        post_list = Review.objects.all()
-        serializer = ReviewSerializer(post_list, many=True)
+        post_list = Post.objects.all()
+        serializer = PostSerializer(post_list, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         pass

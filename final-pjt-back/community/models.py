@@ -1,13 +1,12 @@
-from enum import auto
 from django.db import models
 from django.conf import settings
 
 # Create your models here.
-class Review(models.Model):
+class Post(models.Model):
     # 이 review를 작성한 user
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='posts')
     # 이 review를 좋아요한 user들
-    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_reviews')
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_posts')
     title = models.CharField(max_length=100)
     movie_title = models.CharField(max_length=50)
     rank = models.IntegerField()
@@ -17,6 +16,6 @@ class Review(models.Model):
 
 
 class Comment(models.Model):
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
+    review = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='post_comments')
     content = models.TextField()

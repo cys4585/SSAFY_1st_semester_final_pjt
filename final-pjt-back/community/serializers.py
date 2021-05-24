@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import Review
+from .models import Post
 
 
-class ReviewSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     
     class Meta:
-        model = Review
+        model = Post
         fields = '__all__'

@@ -17,5 +17,5 @@ class MovieCommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MovieComment
-        fields = ('id', 'comment', 'movie', 'user', 'username', 'created_at', 'updated_at',)
+        fields = ('id', 'score', 'comment', 'movie', 'user', 'username', 'created_at', 'updated_at',)
         read_only_fields = ('movie', 'user', )
