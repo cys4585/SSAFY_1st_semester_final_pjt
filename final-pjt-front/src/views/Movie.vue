@@ -21,7 +21,9 @@ export default {
   },
   created: function () {
     this.checkLogin()
-    this.getMoviesFromServer()
+    if (! this.$store.state.movies) {
+      this.getMoviesFromServer()
+    }
   }
 }
 </script>
