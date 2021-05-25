@@ -72,7 +72,8 @@ export default new Vuex.Store({
       state.posts[idx] = updatedPost
     },
     DELETE_POST: function (state, postId) {
-      state.posts.splice(postId, 1)
+      const idx = state.posts.findIndex(post => post.id === postId)
+      state.posts.splice(idx, 1)
     },
     SET_POST_COMMENT_LIST: function (state, comments) {
       state.postComments = comments
@@ -121,6 +122,11 @@ export default new Vuex.Store({
       if (! token) {
         router.push({ name: 'Login' })
       }
+    },
+    logout: function ({ commit }) {
+      localStorage.removeItem('jwt')
+      commit('SET_USERNAME', null)
+      this.$router.push({ name: 'Login' })
     },
     getMoviesFromServer: function ({ commit }) {
       console.log('getMoviesFromServer() 실행')
@@ -256,7 +262,7 @@ export default new Vuex.Store({
         .then(res => {
           // console.log(res.data)
           commit('CREATE_POST', res.data)
-          router.push({ name: 'PostList' })
+          router.push({ name: 'PostDetail', params: { postId: res.data.id } })
         })
         .catch(err => {
           console.log(err)
@@ -356,7 +362,7 @@ export default new Vuex.Store({
         })
     },
     getPostLikeStatusFromServer: function ({ commit }, postId) {
-      console.log('getPostLikeStatusFromServer')
+      // console.log('getPostLikeStatusFromServer')
       axios({
         method: 'get',
         url: `http://127.0.0.1:8000/community/${postId}/likes/`,
@@ -365,7 +371,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           commit('SET_POST_LIKE_STATUS', res.data)
         })
         .catch(err => {

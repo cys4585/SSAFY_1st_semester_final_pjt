@@ -17,10 +17,9 @@ export default {
   components: {
   },
   methods: {
-    ...mapActions(['getMoviesFromServer', 'checkLogin']),
+    ...mapActions(['getMoviesFromServer',]),
   },
   created: function () {
-    this.checkLogin()
     if (! this.$store.state.movies) {
       this.getMoviesFromServer()
     }

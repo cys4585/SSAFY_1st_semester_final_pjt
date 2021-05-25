@@ -4,18 +4,39 @@
     <!-- <h1 id="title">Movie</h1> -->
     <nav>
       <div id="nav">
-        <span>
+        <span v-if="loginUsername">
           <router-link :to="{ name: 'MovieList' }" class="text-decoration-none">Movie</router-link> .
           <router-link :to="{ name: 'Recommend' }" class="text-decoration-none">Recommend</router-link> .
           <router-link :to="{ name: 'PostList' }" class="text-decoration-none">Community</router-link> .
-          <router-link :to="{ name: 'Login' }" class="text-decoration-none">Login</router-link> 
+          <router-link @click.native="logout" to="#">Logout</router-link>
+        </span>
+        <span v-else>
+          <router-link :to="{ name: 'Login' }" class="text-decoration-none">Login</router-link>
         </span>
       </div>
       <router-view/>
     </nav>
-
   </div>
 </template>
+
+<script >
+export default {
+  name: 'App',
+  computed: {
+    loginUsername: function () {
+      return this.$store.state.loginUsername
+    },
+  },
+  methods: {
+    logout: function () {
+      this.$store.dispatch('logout')
+    },
+  },
+  // created: function () {
+  //   this.$store.dispatch('checkLogin')
+  // }
+}
+</script>
 
 <style>
 #app {
