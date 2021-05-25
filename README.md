@@ -32,17 +32,17 @@
 
 2. community app
 
-| HTTP verb | URL 패턴                                  | 설명                         |
-| --------- | ----------------------------------------- | ---------------------------- |
-| GET       | community/                                | 전체 게시글 목록 조회 페이지 |
-| POST      | community/                                | 게시글 생성                  |
-| GET       | community/<post_id>/                      | 게시글 상세(detail) 페이지   |
-| PUT       | community/<post_id>/                      | 게시글 수정                  |
-| DELETE    | community/<post_id>/                      | 게시글 삭제                  |
-| POST      | community/<post_id>/likes/                | 게시글 좋아요 / 취소         |
-| POST      | community/<post_id>/comment/              | 게시글 댓글 생성             |
-| PUT       | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
-| DELETE    | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
+| HTTP verb  | URL 패턴                                  | 설명                         |
+| ---------- | ----------------------------------------- | ---------------------------- |
+| GET        | community/                                | 전체 게시글 목록 조회 페이지 |
+| POST       | community/                                | 게시글 생성                  |
+| GET        | community/<post_id>/                      | 게시글 상세(detail) 페이지   |
+| PUT        | community/<post_id>/                      | 게시글 수정                  |
+| DELETE     | community/<post_id>/                      | 게시글 삭제                  |
+| POST       | community/<post_id>/likes/                | 게시글 좋아요 / 취소         |
+| GET & POST | community/<post_id>/comment/              | 게시글 댓글 조회 / 댓글 생성 |
+| PUT        | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
+| DELETE     | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
 
 
 
@@ -96,13 +96,13 @@
 
 - 0525 (화)
 
-  - recommend 아이디에이션, 로직 구현 (장르별 각각 1개씩 추천?)
+  - community 마무리, recommend 아이디에이션, 로직 구현 (장르별 각각 1개씩 추천?)
   - 부족한 페이지 더 완성도 높이기
   - 아마 추가할 작업이 있을 것 같음...
 
 - 0526 (수)
 
-  - 디버깅 (에러 0% 도전)
+  - 추가 작업 / 디버깅
 
 - 0527 (목)
 
