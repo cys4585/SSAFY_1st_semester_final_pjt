@@ -30,18 +30,19 @@ URL = 'https://api.themoviedb.org/3'
 # KEY 넣어주세요!
 KEY = ''    
 
-page = 25   
+page = 25
 # page : 1 ~ 500
 # page당 data 20개
 # popular/ 경로의 page는 최대 500 page 까지 되는거 같습니다. (총 10000개 data 얻을 수 있을 듯?)
 for i in range(1, page + 1):
-    url = f'{URL}/movie/popular/?api_key={KEY}&page={i}'
+    url = f'{URL}/movie/popular/?api_key={KEY}&language=ko-KR&page={i}'
     response = requests.get(url)
     res_data = response.json()['results']  
     print(response.json()['page'])      # 진행 상황을 알기위한 출력 :)
 
     for j in range(len(res_data)):
         movie = res_data[j]
+        # print(movie)
         # release_date 가 없는 경우도 있어서... 이 경우는 continue를 해줍니다!
         # poster_path가 없는 경우도 continue를 해줍니다!
         if not movie.get('release_date') or not movie.get('poster_path'): 
@@ -60,5 +61,5 @@ for i in range(1, page + 1):
         data.append(tmp)
 
 # 파일을 만들지 않아도 자동으로 생성해서 입력됩니다.
-with open('movies.json', 'w') as f:
-    json.dump(data, f, indent=4)
+with open('movies.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, indent=4, ensure_ascii=False)

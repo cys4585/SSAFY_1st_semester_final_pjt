@@ -39,7 +39,11 @@ export default {
     MovieCommentForm,
   },
   created: function () {
-    this.$store.dispatch('getMovieLikeStatusFromServer', this.movie.id)
+    // console.log('detail.vue created')
+    // console.log(this.$route.params)
+    if (this.movieId) {
+      this.$store.dispatch('getMovieLikeStatusFromServer', Number(this.$route.params.movieId))
+    }
   },
   computed: {
     movie: function () {

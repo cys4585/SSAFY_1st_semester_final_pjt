@@ -15,6 +15,7 @@ export default new Vuex.Store({
     movieComments: [],
     movieLikeStatus: null,
     movieLikeCount: null,
+    recommendedMovie: null,
     posts: [],
     post: {},
     postComments: [],
@@ -88,6 +89,9 @@ export default new Vuex.Store({
     DELETE_POST_COMMENT: function (state, commentId) {
       const idx = state.postComments.findIndex(comment => comment.id === commentId)
       state.postComments.splice(idx, 1)
+    },
+    SET_RECOMMENDED_MOVIE: function (state, movie) {
+      state.recommendedMovie = movie
     },
   },
   actions: {
@@ -391,6 +395,43 @@ export default new Vuex.Store({
         })
         .catch(err => {
           alert('권한 없음')
+          console.log(err)
+        })
+    },
+    getRecommendedMovieFromServer: function ({ commit }) {
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/movies/recommend/`,
+        params: {
+          'base': 'commented',
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          console.log(res.data)
+          commit('SET_RECOMMENDED_MOVIE', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    filterMovieList: function ({ commit }, filters) {
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/movies/`,
+        params: {
+          filters,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          console.log(commit, res)
+        })
+        .catch(err => {
           console.log(err)
         })
     },
