@@ -3,7 +3,7 @@
       <!-- <h3>PostCard</h3> -->
       <th scope="row">{{ post.id }}</th>
       <th>{{ post.username }}</th>
-      <td>{{ post.title }}</td>
+      <th>{{ post.title }}</th>
   </tr>
 </template>
 
@@ -25,7 +25,7 @@ export default {
 
 <style>
 .text-color {
-  color: antiquewhite;
+  color: rgba(240, 248, 255, 0.863);
   cursor: pointer;
 }
 

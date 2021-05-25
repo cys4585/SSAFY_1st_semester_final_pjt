@@ -47,7 +47,7 @@ export default {
   padding: 30px;
 }
 .signup-button {
-  background-color: rgb(122, 31, 162);
+  background-color: rgb(72, 38, 206);
   color: aliceblue;
 }
 </style>

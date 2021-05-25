@@ -1,17 +1,18 @@
 <template>
-  <div class="container">
+  <div class="container postlist-margin">
+    <h2 class="community-title">COMMUNITY</h2>
     <!-- <h2>PostList.vue</h2> -->
-    <button class="btn buttoncolor" @click="postForm">New Post</button>
-    <table class="table">
-      <thead class="post">
+    
+    <table class="table post-list">
+      <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Title</th>
-          <!--좋아요 수 <th scope="col">Likes</th> -->
+          <!-- class="post" 좋아요 수 <th scope="col">Likes</th> -->
         </tr>
       </thead>
-      <tbody>
+      <tbody class="post">
         <PostCard
           v-for="(post, idx) in posts"
           :key="idx"
@@ -19,7 +20,7 @@
         />
       </tbody>
     </table>
-
+    <button class="btn community-post-button" @click="postForm">New Post</button>
 
   </div>
 </template>
@@ -46,18 +47,22 @@ export default {
 </script>
 
 <style>
-.table {
-  margin-top: 0px;
+.postlist-margin {
+  margin-top: 50px;
 }
-.post {
-  color: #E1DCD9;
+.community-title {
+  color: rgba(240, 248, 255, 0.911);
 }
-.buttoncolor {
+.post-list {
+  margin-top: 70px;
+  color: rgba(240, 248, 255, 0.678);
+}
+.community-post-button {
   background-color: black;
   border-color: blueviolet;
   color: aliceblue;
-  /* float: right; */
+  float: right;
   margin-bottom: 30px;
-  margin-top: 100px;
+  margin-top: 5px;
 }
 </style>

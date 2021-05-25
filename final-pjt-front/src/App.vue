@@ -8,7 +8,7 @@
           <router-link :to="{ name: 'MovieList' }" class="text-decoration-none">Movie</router-link> .
           <router-link :to="{ name: 'Recommend' }" class="text-decoration-none">Recommend</router-link> .
           <router-link :to="{ name: 'PostList' }" class="text-decoration-none">Community</router-link> .
-          <router-link @click.native="logout" to="#">Logout</router-link>
+          <router-link @click.native="logout" to="#" class="text-decoration-none">Logout</router-link>
         </span>
         <span v-else>
           <router-link :to="{ name: 'Login' }" class="text-decoration-none">Login</router-link>
@@ -72,7 +72,7 @@ export default {
 }
 
 #nav a.router-link-exact-active {
-  color: #D3B7D8;
+  color: #775aad;
 }
 .nav {
   margin-bottom: 50px;

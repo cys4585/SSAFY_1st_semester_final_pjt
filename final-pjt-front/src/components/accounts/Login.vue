@@ -46,13 +46,13 @@ export default {
   padding: 30px;
 }
 .login-button {
-  background-color: rgb(122, 31, 162);
+  background-color: rgb(72, 38, 206);
   color: aliceblue;
 }
 
 .signup {
   text-decoration: none;
-  color: rgb(122, 31, 162);
+  color: rgb(72, 38, 206);
   font-weight: bold;
 }
 

@@ -1,5 +1,8 @@
 <template>
   <div class="container moviedetail">
+    <div>
+      <!-- <h2 class="moviedetail-title">영화 정보</h2> -->
+    </div>
     <!-- 포스터 -->
     <div class="movieposter">
       <!-- <h2>MovieDetail.vue</h2> -->
@@ -80,8 +83,10 @@ export default {
 </script>
 
 <style>
+
 .moviedetail {
   display: flex;
+
 }
 .moviedetail-title {
   display: inline;
@@ -89,25 +94,25 @@ export default {
 
 .movieposter {
   display: inline-block;
+  border: solid rgba(206, 232, 255, 0.603);
+  border-width: 1px;
   margin-top: 50px;
   margin-right: 100px;
   margin-bottom: 100px;
 }
-
 .moviecontent {
   margin-top: 50px;
 }
-
 .movieoverview-line {
   color: white;
 }
 .moviedetail-like-button {
-  background-color: black;
-  color: red;
+  color:red;
   font-size: 40px;
 }
 .moviedetail-unlike-button {
-  color:red;
+  background-color: black;
+  color: red;
   font-size: 40px;
 }
 

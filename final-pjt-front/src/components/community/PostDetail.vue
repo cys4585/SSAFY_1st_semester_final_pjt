@@ -7,25 +7,26 @@
       <p>제목 : {{ post.title }}</p>
       <p>내용 : {{ post.content }}</p>
       <hr>
-      <div class="postdetail-display">
+      <div v-if="post.username === loginUsername" class="postdetail-button">
+        <button class="btn post-update-button" @click="postForm">수정</button>
+        <button class="btn post-delete-button" @click="deletePost">삭제</button>
+      </div>
+      <div>
         <button 
-          class="btn btn-primary" @click="postLike"
+          class="btn postdetail-unlike-button" @click="postLike"
           v-if="isLike"
           >
           <i class="far fa-heart"></i>
         </button>
         <button 
-          class="btn btn-primary" @click="postLike"
+          class="btn postdetail-like-button" @click="postLike"
           v-else
           >
           <i class="fas fa-heart"></i>
         </button>
         <p>좋아요 {{ likeCount }}개</p>
       </div>
-      <div v-if="post.username === loginUsername" class="postdetail-button">
-        <button class="btn btn-warning" @click="postForm">수정</button>
-        <button class="btn btn-danger" @click="deletePost">삭제</button>
-      </div>
+
       <PostCommentForm :postId="post.id"/>
       <PostCommentList :postId="post.id"/>
     </div>
@@ -83,10 +84,32 @@ export default {
 .postdetail-margin {
   margin: 40px 
 }
-.postdetail-display {
-  display: flex;
-}
+
 .postdetail-button {
-  display: flex;
+  text-align: right;
+  
+}
+.postdetail-like-button {
+  color:red;
+  font-size: 30px;
+}
+.postdetail-unlike-button {
+  background-color: black;
+  color: red;
+  font-size: 30px;
+}
+.post-update-button {
+  background-color: black;
+  /* border-color: rgb(0, 183, 255); */
+  border-color: rgba(206, 232, 255, 0.603);
+  color: aliceblue;
+  margin-right: 10px;
+
+}
+.post-delete-button {
+  background-color: black;
+  border-color: rgba(206, 232, 255, 0.603);
+  color: aliceblue;
+
 }
 </style>
