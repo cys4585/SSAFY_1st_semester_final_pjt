@@ -7,7 +7,6 @@
           <h3>{{ movie.title }}</h3>
           <p>{{ movie.overview }}</p><i class="ion-ios-arrow-right"></i>
         </figcaption>
-        <a href="#"></a>
       </figure>
     </b-card>
   </div>

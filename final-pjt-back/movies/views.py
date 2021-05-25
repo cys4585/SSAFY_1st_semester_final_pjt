@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_list_or_404, render, get_object_or_404
 from django.http import JsonResponse
 
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Movie, MovieComment
+from .models import Genre, Movie, MovieComment
 from .serializers import MovieSerializer, MovieCommentSerializer
 from rest_framework.decorators import api_view
 
@@ -12,13 +12,50 @@ from rest_framework.decorators import authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
+import random
+
 
 @api_view(['GET'])
 @authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def movie_list(request):
-    movies = Movie.objects.all()
+    movies = None
+    # filtering genres
+    if request.GET.getlist('genres[]'):
+        genre_names = request.GET.getlist('genres[]')
+        genres = Genre.objects.filter(name__in=genre_names)
+        for genre in genres:
+            if movies is None:
+                movies = genre.movie_set.all()
+            else:
+                # querySet.union(querySet) -> querySet 합치기
+                # arg : all=False -> 중복 제거
+                movies = movies.union(genre.movie_set.all(), all=False)
+            # print(len(movies))
+    else:
+        movies = Movie.objects.all()
+    # sorting (내림차순)
+    if request.GET.get('sorter'):
+        sorter = request.GET.get('sorter')
+        # 최신순 
+        if sorter == 'latest':
+            movies = movies.order_by('-release_date')
+        # 인기순
+        elif sorter == 'popularity':
+            movies = movies.order_by('-popularity')
+        # 평점순
+        elif sorter == 'rating':
+            movies = movies.order_by('-vote_average')
     serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def movie(request, movie_id):
+    movie = get_object_or_404(Movie, pk=movie_id)
+    serializer = MovieSerializer(movie)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -75,3 +112,36 @@ def like(request, movie_id):
         'count': movie.like_users.count(),
     }
     return JsonResponse(data=like_status)
+
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def recommend_movie(request):
+    # 댓글을 남긴(평점을 매긴) 영화 기반
+    if request.GET.get('base') == 'commented':
+        # 댓글평점(score) 8점 이상을 준 comments 가져오기
+        comments = MovieComment.objects.filter(user=request.user, score__gte=8)
+        length = comments.count()
+        # comment가 1개 이상 존재하면 -> 추천 
+        if length:
+            # comments를 남긴 영화 중에서 random 선택, 그 영화의 장르 목록 가져오기
+            idx = random.randint(0, length - 1)
+            genres = comments[idx].movie.genre_ids.all()
+            # 장르가 같은 영화 중에서 
+            # vote_average>=7.5 인 영화중에서 
+            # random으로 영화 추천
+            rec_movies = []
+            for genre in genres:
+                movies = genre.movie_set.filter(vote_average__gte=7.5)
+                idx = random.randint(0, movies.count() - 1)
+                rec_movies.append(movies[idx])
+
+            idx = random.randint(0, len(rec_movies) - 1)
+            if rec_movies:
+                rec_movie = rec_movies[idx]
+                serializer = MovieSerializer(rec_movie)
+                print(type(serializer.data))
+                return Response(serializer.data, status=status.HTTP_200_OK)
+                
+    return Response(status=status.HTTP_204_NO_CONTENT)
