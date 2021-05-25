@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h4>PostCommentCard.vue</h4>
+    <!-- <h4>PostCommentCard.vue</h4> -->
     <!-- {{ comment }} -->
-    {{ comment.username }}| {{ comment.content }}
+    {{ comment.username }} : {{ comment.content }}
     <!-- <button class="btn btn-warning" @click="">수정</button> -->
     <button 
       v-if="loginUsername === comment.username"
-      class="btn btn-danger" 
+      class="btn postcomment-delete-button" 
       @click="deleteComment"
       >
-      삭제
+      <i class="fas fa-trash-alt"></i>
     </button>
   </div>
 </template>
@@ -40,5 +40,8 @@ export default {
 </script>
 
 <style>
-
+.postcomment-delete-button {
+  background-color: black;
+  color: aliceblue;
+}
 </style>

@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h3>PostCommentForm.vue</h3>
-    <textarea v-model="comment" @keyup.enter="createPostComment" placeholder="댓글 입력란"></textarea>
-    <button @click="createPostComment" class="btn btn-success">작성</button>
+    <div class="mb-3">
+      <h3>PostCommentForm.vue</h3>
+      <input  v-model="comment" @keyup.enter="createPostComment" type="text" class="form-control d-inline postcommentform" id="formGroupExampleInput" placeholder="댓글을 작성해주세요.">
+      <button @click="createPostComment" class="btn postcomment-button">작성</button>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -28,5 +31,14 @@ export default {
 </script>
 
 <style>
+.postcommentform {
+  width: 90%;
+  margin-right: 10px;
+}
 
+.postcomment-button {
+  background-color: black;
+  border-color: blueviolet;
+  color: aliceblue;
+}
 </style>

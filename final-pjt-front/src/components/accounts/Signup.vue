@@ -14,7 +14,7 @@
           <label for="passwordconfirmation" class="form-label">PasswordConfirmation</label>
           <input type="password" class="form-control" id="passwordconfirmation" v-model="credentials.passwordConfirmation">
         </div>
-        <button type="submit" class="btn btn-primary w-100 mb-3" @click="signup(credentials)">Signup</button>
+        <button type="submit" class="btn signup-button w-100 mb-3" @click="signup(credentials)">Signup</button>
   
       </div>
   </div>
@@ -42,8 +42,12 @@ export default {
 
 <style>
 #signup-background {
-  background-color: rgb(175, 175, 175, 0.5);
+  background-color: rgb(175, 175, 175, 0.7);
   color: black;
   padding: 30px;
+}
+.signup-button {
+  background-color: rgb(122, 31, 162);
+  color: aliceblue;
 }
 </style>

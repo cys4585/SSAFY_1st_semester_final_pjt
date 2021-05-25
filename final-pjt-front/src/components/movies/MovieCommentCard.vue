@@ -6,10 +6,10 @@
     <!-- <button class="btn btn-warning" @click="">수정</button> -->
     <button 
       v-if="loginUsername === comment.username"
-      class="btn btn-danger" 
+      class="btn moviecomment-delete-button" 
       @click="deleteComment"
       >
-      삭제
+      <i class="fas fa-trash-alt"></i>
     </button>
   </div>
 </template>
@@ -40,5 +40,8 @@ export default {
 </script>
 
 <style>
-
+.moviecomment-delete-button {
+  background-color: black;
+  color: aliceblue;
+}
 </style>

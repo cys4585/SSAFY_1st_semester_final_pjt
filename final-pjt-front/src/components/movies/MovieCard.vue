@@ -52,7 +52,7 @@ export default {
 }
 
 #cardhover :hover {
-  border-block-color: #D3B7D8;
+  border-block-color: rgb(122, 31, 162);
 }
 
 

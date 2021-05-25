@@ -10,8 +10,9 @@
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" id="password" v-model="credentials.password">
         </div>
-        <button type="submit" class="btn btn-primary w-100 mb-3" @click="login(credentials)">Login</button>
-        <p>MOVIE 회원이 아닌가요?<router-link :to="{ name: 'Signup' }" class="signup">지금 가입하세요</router-link></p>
+        <button type="submit" class="btn login-button w-100 mb-3" @click="login(credentials)">Login</button>
+        <p>MOVIE 회원이 아닌가요?</p>
+        <router-link :to="{ name: 'Signup' }" class="signup">지금 가입하세요</router-link>
     </div>
     <router-view/>
   </div>
@@ -44,10 +45,14 @@ export default {
   color: black;
   padding: 30px;
 }
+.login-button {
+  background-color: rgb(122, 31, 162);
+  color: aliceblue;
+}
 
 .signup {
   text-decoration: none;
-  color: #632A7E;
+  color: rgb(122, 31, 162);
   font-weight: bold;
 }
 

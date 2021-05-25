@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Community Page</h1>
+    <!-- <h1>Community Page</h1>
     |
-    <router-link :to="{ name: 'PostList' }">PostList</router-link> |
+    <router-link :to="{ name: 'PostList' }">PostList</router-link> | -->
     <router-view/>
   </div>
 </template>

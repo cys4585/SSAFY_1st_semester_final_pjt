@@ -1,30 +1,34 @@
 <template>
-  <div>
-    <h2>PostDetail.vue</h2>
-    <p>작성자 : {{ post.username }}</p>
-    <p>제목 : {{ post.title }}</p>
-    <p>내용 : {{ post.content }}</p>
-    <div v-if="post.username === loginUsername">
-      <button class="btn btn-warning" @click="postForm">수정</button>
-      <button class="btn btn-danger" @click="deletePost">삭제</button>
+  <div class="container postdetail">
+    <div class="postdetail-margin">
+      <!-- 전체를 네모 form안에 넣기 -->
+      <h2>PostDetail.vue</h2>
+      <p>작성자 : {{ post.username }}</p>
+      <p>제목 : {{ post.title }}</p>
+      <p>내용 : {{ post.content }}</p>
+      <hr>
+      <div class="postdetail-display">
+        <button 
+          class="btn btn-primary" @click="postLike"
+          v-if="isLike"
+          >
+          <i class="far fa-heart"></i>
+        </button>
+        <button 
+          class="btn btn-primary" @click="postLike"
+          v-else
+          >
+          <i class="fas fa-heart"></i>
+        </button>
+        <p>좋아요 {{ likeCount }}개</p>
+      </div>
+      <div v-if="post.username === loginUsername" class="postdetail-button">
+        <button class="btn btn-warning" @click="postForm">수정</button>
+        <button class="btn btn-danger" @click="deletePost">삭제</button>
+      </div>
+      <PostCommentForm :postId="post.id"/>
+      <PostCommentList :postId="post.id"/>
     </div>
-    <button 
-      class="btn btn-primary" @click="postLike"
-      v-if="isLike"
-      >
-      <i class="far fa-heart"></i>
-      좋아요 취소
-    </button>
-    <button 
-      class="btn btn-primary" @click="postLike"
-      v-else
-      >
-      <i class="fas fa-heart"></i>
-      좋아요
-    </button>
-    <p class="movie-margin">좋아요 수 : {{ likeCount }}</p>
-    <PostCommentForm :postId="post.id"/>
-    <PostCommentList :postId="post.id"/>
   </div>
 </template>
 
@@ -70,5 +74,19 @@ export default {
 </script>
 
 <style>
-
+.postdetail {
+  border: solid rgba(206, 232, 255, 0.603);
+  border-width: 1px;
+  border-radius: 15px;
+  margin-top: 50px;
+}
+.postdetail-margin {
+  margin: 40px 
+}
+.postdetail-display {
+  display: flex;
+}
+.postdetail-button {
+  display: flex;
+}
 </style>
