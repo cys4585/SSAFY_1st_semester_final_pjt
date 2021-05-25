@@ -1,8 +1,10 @@
 <template>
-  <div @click="goPostDetail(post.id)">
-    <h3>PostCard</h3>
-    {{ post }}
-  </div>
+  <tr class="text-color" @click="goPostDetail(post.id)">
+      <!-- <h3>PostCard</h3> -->
+      <th scope="row">{{ post.id }}</th>
+      <th>{{ post.username }}</th>
+      <td>{{ post.title }}</td>
+  </tr>
 </template>
 
 <script>
@@ -22,5 +24,9 @@ export default {
 </script>
 
 <style>
+.text-color {
+  color: antiquewhite;
+  cursor: pointer;
+}
 
 </style>

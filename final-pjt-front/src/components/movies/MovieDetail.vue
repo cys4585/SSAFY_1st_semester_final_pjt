@@ -1,29 +1,44 @@
 <template>
-  <div class="container">
-    <div class="movie">
-      <h2>MovieDetail.vue</h2>
-      <img :src="srcUrl" alt="movieposter" id="movieposter">
-      <button 
-        class="btn btn-primary" @click="movieLike"
-        v-if="isLike"
-        >
-        <i class="far fa-heart"></i>
-        좋아요 취소
-      </button>
-      <button 
-        class="btn btn-primary" @click="movieLike"
-        v-else
-        >
-        <i class="fas fa-heart"></i>
-        좋아요
-      </button>
-      <p class="movie-margin">좋아요 수 : {{ likeCount }}</p>
-      <h3 class="movie-margin">제목: {{ movie.title }}</h3>
-      <p class="movie-margin">줄거리: {{ movie.overview }}</p>
+  <div class="container moviedetail">
+    <!-- 포스터 -->
+    <div class="movieposter">
+      <!-- <h2>MovieDetail.vue</h2> -->
+      <img :src="srcUrl" alt="movieposter">
     </div>
-    <div>
-      <MovieCommentForm :movieId="movie.id" />
-      <MovieCommentList :movieId="movie.id" />
+
+    <div class="moviecontent">
+      <!-- 제목, 줄거리 -->
+      <div>
+        <button 
+          class="btn moviedetail-unlike-button" @click="movieLike"
+          v-if="isLike"
+          >
+          <i class="far fa-heart"></i>
+        </button>
+        <button 
+          class="btn btn moviedetail-like-button" @click="movieLike"
+          v-else
+          >
+          <i class="fas fa-heart heart-color"></i>
+        </button>
+      </div>
+        <!-- <span class="content-margin">{{ likeCount }}</span> -->
+      <div>
+        <h3 class="moviedetail-title">{{ movie.title }}</h3>
+      </div>
+      <div>
+        <hr class="movieoverview-line">
+        <br>
+        <p>{{ movie.overview }}</p>
+        <br>
+        <hr class="movieoverview-line">
+      </div>
+
+      <!-- 댓글 -->
+      <div>
+        <MovieCommentForm :movieId="movie.id" />
+        <MovieCommentList :movieId="movie.id" />
+      </div>
     </div>
   </div>
 </template>
@@ -69,17 +84,35 @@ export default {
 </script>
 
 <style>
-.movie {
-  width: 50rem;
+.moviedetail {
+  display: flex;
+}
+.moviedetail-title {
+  display: inline;
 }
 
-#movieposter {
+.movieposter {
   display: inline-block;
-  margin-right: 50px;
+  margin-top: 50px;
+  margin-right: 100px;
+  margin-bottom: 100px;
 }
 
-.movie-margin {
-  display: inline-block;
-  margin-right: 50px;
+.moviecontent {
+  margin-top: 50px;
 }
+
+.movieoverview-line {
+  color: white;
+}
+.moviedetail-like-button {
+  background-color: black;
+  color: red;
+  font-size: 40px;
+}
+.moviedetail-unlike-button {
+  color:red;
+  font-size: 40px;
+}
+
 </style>

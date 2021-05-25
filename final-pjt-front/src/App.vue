@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 탭 네브바 -->
-    <h1 id="title">Movie</h1>
+    <!-- <h1 id="title">Movie</h1> -->
     <nav>
       <div id="nav">
         <span v-if="loginUsername">
@@ -46,24 +46,25 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #6a7d91;
-  margin-left: 60px;
-  margin-right: 60px;
+  margin-left: 0;
+  margin-right: 0;
   font-size: 20px;
 
 }
 
 #title {
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 0%;
   font-size: 60px;
   font-weight: 600;
-  color: #632A7E;
-  margin-left: 10px;
+  color: rgb(122, 31, 162);
+  margin-left: 60px;
 }
 
 #nav {
-  padding: 20px;
   background-color: black;
+  margin-left: 40px;
+  padding: 20px;
 }
 
 #nav a {

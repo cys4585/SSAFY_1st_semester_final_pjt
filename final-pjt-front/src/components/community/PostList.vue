@@ -1,23 +1,26 @@
 <template>
   <div class="container">
-    <h2>PostList.vue</h2>
-    <button class="btn btn-primary" @click="postForm">New Post</button>
+    <!-- <h2>PostList.vue</h2> -->
+    <button class="btn buttoncolor" @click="postForm">New Post</button>
     <table class="table">
       <thead class="post">
         <tr>
           <th scope="col">#</th>
+          <th scope="col">Name</th>
           <th scope="col">Title</th>
-          <th scope="col">Content</th>
           <!--좋아요 수 <th scope="col">Likes</th> -->
         </tr>
       </thead>
+      <tbody>
+        <PostCard
+          v-for="(post, idx) in posts"
+          :key="idx"
+          :post="post"
+        />
+      </tbody>
     </table>
-    <PostCard
-      v-for="(post, idx) in posts"
-      :key="idx"
-      :post="post"
-    />
-    <button type="button" class="btn btn-dark">글작성</button>
+
+
   </div>
 </template>
 
@@ -48,5 +51,13 @@ export default {
 }
 .post {
   color: #E1DCD9;
+}
+.buttoncolor {
+  background-color: black;
+  border-color: blueviolet;
+  color: aliceblue;
+  /* float: right; */
+  margin-bottom: 30px;
+  margin-top: 100px;
 }
 </style>
