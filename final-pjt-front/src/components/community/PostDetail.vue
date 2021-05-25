@@ -8,6 +8,21 @@
       <button class="btn btn-warning" @click="postForm">수정</button>
       <button class="btn btn-danger" @click="deletePost">삭제</button>
     </div>
+    <button 
+      class="btn btn-primary" @click="postLike"
+      v-if="isLike"
+      >
+      <i class="far fa-heart"></i>
+      좋아요 취소
+    </button>
+    <button 
+      class="btn btn-primary" @click="postLike"
+      v-else
+      >
+      <i class="fas fa-heart"></i>
+      좋아요
+    </button>
+    <p class="movie-margin">좋아요 수 : {{ likeCount }}</p>
     <PostCommentForm :postId="post.id"/>
     <PostCommentList :postId="post.id"/>
   </div>
@@ -23,12 +38,21 @@ export default {
     PostCommentForm,
     PostCommentList,
   },
+  created: function () {
+    this.$store.dispatch('getPostLikeStatusFromServer', this.post.id)
+  },
   computed: {
     post: function () {
       return this.$store.getters.getPostById(Number(this.$route.params.postId))
     },
     loginUsername: function () {
       return this.$store.state.loginUsername
+    },
+    isLike: function () {
+      return this.$store.state.postLikeStatus
+    },
+    likeCount: function () {
+      return this.$store.state.postLikeCount
     }
   },
   methods: {
@@ -37,6 +61,9 @@ export default {
     },
     deletePost: function () {
       this.$store.dispatch('deletePost', this.post.id)
+    },
+    postLike: function () {
+      this.$store.dispatch('postLike', this.post.id)
     }
   },
 }

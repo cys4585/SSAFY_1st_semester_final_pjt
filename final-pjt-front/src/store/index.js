@@ -18,6 +18,8 @@ export default new Vuex.Store({
     posts: [],
     post: {},
     postComments: [],
+    postLikeStatus: null,
+    postLikeCount: null,
   },
   getters: {
     getMovieById: function (state) {
@@ -54,7 +56,7 @@ export default new Vuex.Store({
       state.movieLikeStatus = likeStatus.liked
       state.movieLikeCount = likeStatus.count
     },
-    DELETE_COMMENT: function (state, commentId) {
+    DELETE_MOVIE_COMMENT: function (state, commentId) {
       const comment = state.movieComments.find(comment => comment.id === commentId)
       const idx = state.movieComments.indexOf(comment)
       state.movieComments.splice(idx, 1)
@@ -77,6 +79,14 @@ export default new Vuex.Store({
     },
     CREATE_POST_COMMENT: function (state, comment) {
       state.postComments.push(comment)
+    },
+    SET_POST_LIKE_STATUS: function (state, likeStatus) {
+      state.postLikeStatus = likeStatus.liked
+      state.postLikeCount = likeStatus.count
+    },
+    DELETE_POST_COMMENT: function (state, commentId) {
+      const idx = state.postComments.findIndex(comment => comment.id === commentId)
+      state.postComments.splice(idx, 1)
     },
   },
   actions: {
@@ -169,7 +179,7 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    deleteComment: function ({ commit }, { movieId, commentId }) {
+    deleteMovieComment: function ({ commit }, { movieId, commentId }) {
       axios({
         method: 'delete',
         url: `http://127.0.0.1:8000/movies/${movieId}/comment/${commentId}/`,
@@ -178,14 +188,14 @@ export default new Vuex.Store({
         },
       })
         .then(function () {
-          commit('DELETE_COMMENT', commentId)
+          commit('DELETE_MOVIE_COMMENT', commentId)
         })
         .catch(err => {
           alert('권한 없음')
           console.log(err)
         })
     },
-    getLikeStatusFromServer: function ({ commit }, movieId) {
+    getMovieLikeStatusFromServer: function ({ commit }, movieId) {
       axios({
         method: 'get',
         url: `http://127.0.0.1:8000/movies/${movieId}/likes/`,
@@ -303,7 +313,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           commit('SET_POST_COMMENT_LIST', res.data)
         })
         .catch(err => {
@@ -328,7 +338,56 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
-    }
+    },
+    postLike: function ({ commit }, postId) {
+      axios({
+        method: 'post',
+        url: `http://127.0.0.1:8000/community/${postId}/likes/`,
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          console.log(res.data)
+          commit('SET_POST_LIKE_STATUS', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getPostLikeStatusFromServer: function ({ commit }, postId) {
+      console.log('getPostLikeStatusFromServer')
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/community/${postId}/likes/`,
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          console.log(res.data)
+          commit('SET_POST_LIKE_STATUS', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    deletePostComment: function ({ commit }, { postId, commentId }) {
+      axios({
+        method: 'delete',
+        url: `http://127.0.0.1:8000/community/${postId}/comment/${commentId}/`,
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(function () {
+          commit('DELETE_POST_COMMENT', commentId)
+        })
+        .catch(err => {
+          alert('권한 없음')
+          console.log(err)
+        })
+    },
   },
   modules: {
   }

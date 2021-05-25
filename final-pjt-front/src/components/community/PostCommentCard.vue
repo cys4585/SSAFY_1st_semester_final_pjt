@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h4>MovieCommentCard.vue</h4>
+    <h4>PostCommentCard.vue</h4>
     <!-- {{ comment }} -->
-    점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
+    {{ comment.username }}| {{ comment.content }}
     <!-- <button class="btn btn-warning" @click="">수정</button> -->
     <button 
       v-if="loginUsername === comment.username"
@@ -18,12 +18,12 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'MovieCommentCard',
+  name: 'PostCommentCard',
   props: {
     comment: {
       type: Object,
     },
-    movieId: {
+    postId: {
       type: Number,
     }
   },
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     deleteComment: function () {
-      this.$store.dispatch('deleteMovieComment', {movieId: this.movieId, commentId: this.comment.id})
+      this.$store.dispatch('deletePostComment', {postId: this.postId, commentId: this.comment.id})
     }
   }
 

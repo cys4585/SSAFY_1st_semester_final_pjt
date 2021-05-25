@@ -39,7 +39,7 @@ export default {
     MovieCommentForm,
   },
   created: function () {
-    this.$store.dispatch('getLikeStatusFromServer', this.movie.id)
+    this.$store.dispatch('getMovieLikeStatusFromServer', this.movie.id)
   },
   computed: {
     movie: function () {
