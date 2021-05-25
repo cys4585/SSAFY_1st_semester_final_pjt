@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 
 import Movie from '@/views/Movie.vue'
 import MovieList from '@/components/movies/MovieList.vue'
-import Recommend from '@/components/movies/Recommend.vue'
 import MovieDetail from '@/components/movies/MovieDetail.vue'
 
 import Community from '@/views/Community.vue'
@@ -15,21 +14,27 @@ import PostDetail from '@/components/community/PostDetail.vue'
 import Account from '@/views/Account.vue'
 import Signup from '@/components/accounts/Signup.vue'
 import Login from '@/components/accounts/Login.vue'
+import Recommend from '@/components/accounts/Recommend.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
+  { 
+    path: '', 
+    redirect: '/movies',
+  },
   {
     path: '/movies', component: Movie,
+    meta: { authRequired: true},
     children: [
       { path: '', name: 'MovieList', component: MovieList },
-      { path: 'recommend', name: 'Recommend', component: Recommend },
       { path: ':movieId', name: 'MovieDetail', component: MovieDetail },
     ],
   },
   {
     path: '/community', component: Community,
+    meta: { authRequired: true},
     children: [
       { path: '', name: 'PostList', component: PostList },
       { path: 'post', name: 'PostCreateForm', component: PostCreateForm },
@@ -40,16 +45,30 @@ const routes = [
   {
     path: '/accounts', component: Account,
     children: [
-      { path: 'signup', name: 'Signup', component: Signup },
-      { path: 'login', name: 'Login', component: Login },
+      { path: 'signup', name: 'Signup', component: Signup, meta: { authRequired: false}, },
+      { path: 'login', name: 'Login', component: Login, meta: { authRequired: false}, },
+      { path: 'recommend', name: 'Recommend', component: Recommend, meta: { authRequired: true}, },
     ],
   },
+  {
+    path: '*',
+    component: () => import ('@/views/NotFoundPage.vue'),
+  }
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach(function (to, from, next) {
+  if (to.matched.some(routeInfo => routeInfo.meta.authRequired) && !localStorage.getItem('jwt')) {
+    // window.alert('Login Please!')
+    next({ name: 'Login' })
+  } else {
+    next()
+  }
 })
 
 export default router
