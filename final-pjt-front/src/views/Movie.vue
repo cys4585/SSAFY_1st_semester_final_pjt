@@ -9,9 +9,7 @@ export default {
   name: 'Movie',
   components: {
   },
-  created: function () {
-    this.$store.dispatch('getMoviesFromServer')
-  }
+
 }
 </script>
 

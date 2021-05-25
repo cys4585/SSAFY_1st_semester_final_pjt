@@ -56,13 +56,12 @@ export default {
   created: function () {
     // console.log('detail.vue created')
     // console.log(this.$route.params)
-    if (this.movieId) {
-      this.$store.dispatch('getMovieLikeStatusFromServer', Number(this.$route.params.movieId))
-    }
+    this.$store.dispatch('getMovieFromServer', Number(this.$route.params.movieId))
+    this.$store.dispatch('getMovieLikeStatusFromServer', Number(this.$route.params.movieId))
   },
   computed: {
     movie: function () {
-      return this.$store.getters.getMovieById(Number(this.$route.params.movieId))
+      return this.$store.state.movie
     },
     isLike: function () {
       return this.$store.state.movieLikeStatus

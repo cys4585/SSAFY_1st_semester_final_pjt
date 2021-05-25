@@ -12,6 +12,7 @@ export default new Vuex.Store({
   state: {
     loginUsername: null,
     movies: null,
+    movie: null,
     movieComments: [],
     movieLikeStatus: null,
     movieLikeCount: null,
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     },
     SET_MOVIES: function (state, movies) {
       state.movies = movies
+    },
+    SET_MOVIE: function (state, movie) {
+      state.movie = movie
     },
     SET_MOVIE_COMMENTS: function (state, comments) {
       state.movieComments = comments
@@ -142,6 +146,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
+          console.log(res.data)
           commit('SET_MOVIES', res.data)
         })
         .catch(err => {
@@ -151,6 +156,23 @@ export default new Vuex.Store({
     goMovieDetail: function (context, movieId) {
       // console.log(movieId)
       router.push({ name: 'MovieDetail', params: { movieId } })
+    },
+    getMovieFromServer: function ({ commit }, movieId) {
+      // console.log('getMovieFromServer 실행')
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/movies/${movieId}/`,
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          // console.log(res.data)
+          commit('SET_MOVIE', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     getMovieCommentListFromServer: function ({ commit }, movieId) {
       axios({
@@ -410,26 +432,28 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           commit('SET_RECOMMENDED_MOVIE', res.data)
         })
         .catch(err => {
           console.log(err)
         })
     },
-    filterMovieList: function ({ commit }, filters) {
+    getFilteredSortedMovieListFromServer: function ({ commit }, filters) {
       axios({
         method: 'get',
         url: `http://127.0.0.1:8000/movies/`,
         params: {
-          filters,
+          ...filters,
+          // voteaverage: filters.voteAverage,
         },
         headers: {
           Authorization: `JWT ${localStorage.getItem('jwt')}`
         },
       })
         .then(res => {
-          console.log(commit, res)
+          console.log(res.data)
+          commit('SET_MOVIES', res.data)
         })
         .catch(err => {
           console.log(err)

@@ -19,18 +19,44 @@ import random
 @authentication_classes([JSONWebTokenAuthentication])
 @permission_classes([IsAuthenticated])
 def movie_list(request):
-    print(request.GET)
-    print(type(request.GET))
-    print(request.GET.get('filters'))
-    print(type(request.GET.get('filters')))
-    if request.GET.get('filters'):
-        movies = Movie.objects.all()
-        serializer = MovieSerializer(movies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    movies = None
+    # filtering genres
+    if request.GET.getlist('genres[]'):
+        genre_names = request.GET.getlist('genres[]')
+        genres = Genre.objects.filter(name__in=genre_names)
+        for genre in genres:
+            if movies is None:
+                movies = genre.movie_set.all()
+            else:
+                # querySet.union(querySet) -> querySet 합치기
+                # arg : all=False -> 중복 제거
+                movies = movies.union(genre.movie_set.all(), all=False)
+            # print(len(movies))
     else:
         movies = Movie.objects.all()
-        serializer = MovieSerializer(movies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    # sorting (내림차순)
+    if request.GET.get('sorter'):
+        sorter = request.GET.get('sorter')
+        # 최신순 
+        if sorter == 'latest':
+            movies = movies.order_by('-release_date')
+        # 인기순
+        elif sorter == 'popularity':
+            movies = movies.order_by('-popularity')
+        # 평점순
+        elif sorter == 'rating':
+            movies = movies.order_by('-vote_average')
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def movie(request, movie_id):
+    movie = get_object_or_404(Movie, pk=movie_id)
+    serializer = MovieSerializer(movie)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET', 'POST'])

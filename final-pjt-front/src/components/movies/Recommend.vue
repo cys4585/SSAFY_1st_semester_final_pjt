@@ -24,9 +24,6 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'Recommend',
-  created: function () {
-    // this.$store.dispatch('getRandomCommentedMovie')
-  },
   methods: {
     ...mapActions(['goMovieDetail', 'getRecommendedMovieFromServer']),
   },

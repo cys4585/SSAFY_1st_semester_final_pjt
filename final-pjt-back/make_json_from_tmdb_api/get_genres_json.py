@@ -35,4 +35,5 @@ for i in range(len(res_data)):
 # 파일을 만들지 않아도 자동으로 생성해서 입력됩니다.
 with open('movies.json', 'w') as f:
     json.dump(data, f, indent=4)
-
+# with open('movies.json', 'w', encoding='utf-8') as f:
+#     json.dump(data, f, indent=4, ensure_ascii=False)
