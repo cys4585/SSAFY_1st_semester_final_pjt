@@ -1,15 +1,19 @@
 <template>
   <div id="app">
-    <nav class="navbar">
-      <!-- Navbar content -->
-      <span class="nav text-decoration-none" id="nav-tab" role="tablist">
-        <li class="nav-link active" id="textcolor" data-bs-toggle="tab" type="button" role="tab" aria-controls="nav-home" aria-selected="true"><router-link :to="{ name: 'MovieList' }" class="deco">MovieList</router-link></li>
-        <li class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><router-link :to="{ name: 'Recommend' }">Recommend</router-link></li>
-        <li class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><router-link :to="{ name: 'PostList' }">Community</router-link></li>
-        <li class="nav-link" data-bs-toggle="tab" type="button" role="tab" aria-selected="false"><router-link :to="{ name: 'Login' }">Login</router-link></li>
-      </span>
+    <!-- 탭 네브바 -->
+    <h1 id="title">Movie</h1>
+    <nav>
+      <div id="nav">
+        <span>
+          <router-link :to="{ name: 'MovieList' }" class="text-decoration-none">Movie</router-link> .
+          <router-link :to="{ name: 'Recommend' }" class="text-decoration-none">Recommend</router-link> .
+          <router-link :to="{ name: 'PostList' }" class="text-decoration-none">Community</router-link> .
+          <router-link :to="{ name: 'Login' }" class="text-decoration-none">Login</router-link> 
+        </span>
+      </div>
+      <router-view/>
     </nav>
-    <router-view/>
+
   </div>
 </template>
 
@@ -22,15 +26,43 @@
   color: #6a7d91;
   margin-left: 60px;
   margin-right: 60px;
+  font-size: 20px;
+
 }
 
-.navbar {
+#title {
+  margin-top: 30px;
+  margin-bottom: 0%;
+  font-size: 60px;
+  font-weight: 600;
+  color: #632A7E;
+  margin-left: 10px;
+}
+
+#nav {
+  padding: 20px;
   background-color: black;
-  margin-bottom: 30px;
 }
 
-#textcolor {
+#nav a {
+  font-weight: bold;
+  color: #6a7d91;
+}
+
+#nav a.router-link-exact-active {
   color: #D3B7D8;
 }
+.nav {
+  margin-bottom: 50px;
+}
+.nav-item a {
+  font-size: 20px;
+  color: #D3B7D8;
+  text-decoration: none;
+}
 
+
+.dropdown-menu {
+  background-color: black;
+}
 </style>

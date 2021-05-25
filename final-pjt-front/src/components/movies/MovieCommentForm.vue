@@ -14,8 +14,14 @@
       <option value="9">9</option>
       <option value="10">10</option>
     </select>
-    <textarea v-model="comment" @keyup.enter="createMovieComment" placeholder="댓글 입력란"></textarea>
-    <button @click="createMovieComment" class="btn btn-success">작성</button>
+
+    <div class="mb-3">
+      <input  v-model="comment" @keyup.enter="createMovieComment" type="text" class="form-control w-25 d-inline" id="formGroupExampleInput" placeholder="댓글을 작성해주세요">
+      <button @click="createMovieComment" class="btn btn-success">작성</button>
+    </div>
+    
+    <!-- <textarea v-model="comment" @keyup.enter="createMovieComment" placeholder="댓글 입력란"></textarea> -->
+    
   </div>
 </template>
 
