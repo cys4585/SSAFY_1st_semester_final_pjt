@@ -126,7 +126,7 @@ export default new Vuex.Store({
     logout: function ({ commit }) {
       localStorage.removeItem('jwt')
       commit('SET_USERNAME', null)
-      this.$router.push({ name: 'Login' })
+      router.push({ name: 'Login' })
     },
     getMoviesFromServer: function ({ commit }) {
       console.log('getMoviesFromServer() 실행')
