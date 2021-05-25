@@ -11,7 +11,9 @@
           <input type="password" class="form-control" id="password" v-model="credentials.password">
         </div>
         <button type="submit" class="btn btn-primary w-100 mb-3" @click="login(credentials)">Login</button>
-      </div>
+        <p>MOVIE 회원이 아닌가요?<router-link :to="{ name: 'Signup' }" class="signup">지금 가입하세요</router-link></p>
+    </div>
+    <router-view/>
   </div>
 </template>
 
@@ -36,10 +38,18 @@ export default {
 
 <style>
 
+
 #lgoin-background {
-  background-color: rgb(175, 175, 175, 0.5);
+  background-color: rgba(175, 175, 175, 0.7);
   color: black;
   padding: 30px;
 }
+
+.signup {
+  text-decoration: none;
+  color: #632A7E;
+  font-weight: bold;
+}
+
 
 </style>

@@ -1,13 +1,13 @@
 <template>
-  <div>
+  <div class="container">
     <h2>PostList.vue</h2>
     <button class="btn btn-primary" @click="postForm">New Post</button>
     <table class="table">
-      <thead>
+      <thead class="post">
         <tr>
-          <th scope="col" class="post">#</th>
-          <th scope="col" class="post">Title</th>
-          <th scope="col" class="post">Content</th>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <th scope="col">Content</th>
           <!--좋아요 수 <th scope="col">Likes</th> -->
         </tr>
       </thead>
@@ -17,6 +17,7 @@
       :key="idx"
       :post="post"
     />
+    <button type="button" class="btn btn-dark">글작성</button>
   </div>
 </template>
 
@@ -42,6 +43,9 @@ export default {
 </script>
 
 <style>
+.table {
+  margin-top: 0px;
+}
 .post {
   color: #E1DCD9;
 }
