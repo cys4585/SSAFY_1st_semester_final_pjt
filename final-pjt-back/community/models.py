@@ -8,14 +8,14 @@ class Post(models.Model):
     # 이 review를 좋아요한 user들
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_posts')
     title = models.CharField(max_length=100)
-    movie_title = models.CharField(max_length=50)
-    rank = models.IntegerField()
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
 
-class Comment(models.Model):
-    review = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+class PostComment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='post_comments')
     content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

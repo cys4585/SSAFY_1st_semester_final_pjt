@@ -18,15 +18,15 @@
 
 1. movies app
 
-| HTTP verb | URL 패턴                                | 설명                       |
-| --------- | --------------------------------------- | -------------------------- |
-| GET       | movies/                                 | 전체 영화 목록 조회 페이지 |
-| GET       | movies/recommend/                       | 영화 추천 페이지           |
-| GET       | movies/<movie_id>/                      | 영화 상세(detail) 페이지   |
-| POST      | movies/<movie_id>/likes/                | 영화 좋아요 / 취소         |
-| POST      | movies/<movie_id>/comment/              | 영화 댓글 생성             |
-| PUT       | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 수정             |
-| DELETE    | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 삭제             |
+| HTTP verb  | URL 패턴                                | 설명                                  |
+| ---------- | --------------------------------------- | ------------------------------------- |
+| GET        | movies/                                 | 전체 영화 목록 조회 페이지            |
+| GET        | movies/recommend/                       | 영화 추천 페이지                      |
+| GET        | movies/<movie_id>/                      | 영화 상세(detail) 페이지              |
+| GET & POST | movies/<movie_id>/likes/                | 좋아요 상태 조회 / 영화 좋아요 / 취소 |
+| GET & POST | movies/<movie_id>/comment/              | 영화 댓글 조회 / 영화 댓글 생성       |
+| PUT        | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 수정                        |
+| DELETE     | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 삭제                        |
 
 
 
@@ -92,7 +92,7 @@
 - 0524 (월)
 
   - movie detail, recommend, community 페이지 디자인
-  - 페이지별 데이터 무조건 가져올 수 있어야 한다.
+  - 페이지별 데이터 무조건 가져올 수 있어야 한다. (movie, community 일부 완료)
 
 - 0525 (화)
 

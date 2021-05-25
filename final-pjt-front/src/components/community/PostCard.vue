@@ -1,9 +1,7 @@
 <template>
   <div @click="goPostDetail(post.id)">
     <h3>PostCard</h3>
-    <div>
-      {{ post.title }}
-    </div>
+    {{ post }}
   </div>
 </template>
 
