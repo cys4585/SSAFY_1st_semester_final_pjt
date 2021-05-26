@@ -2,12 +2,17 @@
   <div>
     <h4>MovieCommentCard.vue</h4>
     <!-- {{ comment }} -->
-    점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
-    <!-- <button class="btn moviecomment-update-button dropdown-item" @click="">수정</button> -->
+    <div :id="'movie-comment'+comment.id">
+      점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
+    </div>
     <div class="dropdown moviecomment-dropdown d-inline">
       <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
       <div class="dropdown-menu">
-        <button class="btn dropdown-item moviecomment-update-button">수정</button>
+        <button 
+          class="btn dropdown-item moviecomment-update-button"
+        >
+          수정
+        </button>
         <button 
           v-if="loginUsername === comment.username"
           class="btn moviecomment-delete-button dropdown-item" 
