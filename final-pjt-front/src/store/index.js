@@ -209,6 +209,7 @@ export default new Vuex.Store({
         })
         .catch(err => {
           console.log(err)
+          // alert('댓글(평점)은 하나만 작성할 수 있습니다.')
         })
     },
     deleteMovieComment: function ({ commit }, { movieId, commentId }) {

@@ -68,11 +68,15 @@ def comment_list_create(request, movie_id):
         serializer = MovieCommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     else: 
-        movie = get_object_or_404(Movie, pk=movie_id)
         serializer = MovieCommentSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save(user=request.user, movie=movie)
-            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+            movie = get_object_or_404(Movie, pk=movie_id)
+            # movie comment 중에, user=request.user 이고, movie=movie 인 경우가 있으면 -> save X
+            if not MovieComment.objects.filter(user=request.user, movie=movie).exists():
+                serializer.save(user=request.user, movie=movie)
+                return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+            # print('이미 이 Movie에는 댓글을 남겼어 !! ')
+            return JsonResponse({'message': '이미 댓글을 작성하셨습니다.'}, status=400)
 
 
 @api_view(['PUT', 'DELETE'])
@@ -141,7 +145,7 @@ def recommend_movie(request):
             if rec_movies:
                 rec_movie = rec_movies[idx]
                 serializer = MovieSerializer(rec_movie)
-                print(type(serializer.data))
+                # print(type(serializer.data))
                 return Response(serializer.data, status=status.HTTP_200_OK)
                 
     return Response(status=status.HTTP_204_NO_CONTENT)
