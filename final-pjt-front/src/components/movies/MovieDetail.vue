@@ -12,20 +12,12 @@
     <div class="moviecontent">
       <!-- 제목, 줄거리 -->
       <div>
-        <button 
-          class="btn moviedetail-unlike-button" @click="movieLike"
-          v-if="isLike"
-          >
-          <i class="far fa-heart"></i>
+        <button class="btn moviedetail-like-button" id="like-button" @click="movieLike">
+          <i v-if="isLike" class="fas fa-heart"></i>
+          <i v-else class="far fa-heart"></i>
         </button>
-        <button 
-          class="btn btn moviedetail-like-button" @click="movieLike"
-          v-else
-          >
-          <i class="fas fa-heart heart-color"></i>
-        </button>
+        <span class="content-margin">{{ likeCount }}</span>
       </div>
-        <!-- <span class="content-margin">{{ likeCount }}</span> -->
       <div>
         <h3 class="moviedetail-title">{{ movie.title }}</h3>
       </div>
@@ -55,7 +47,7 @@ export default {
   components: {
     MovieCommentList,
     MovieCommentForm,
-  },
+  }, 
   created: function () {
     // console.log('detail.vue created')
     // console.log(this.$route.params)
@@ -80,7 +72,11 @@ export default {
   methods: {
     movieLike: function () {
       this.$store.dispatch('movieLike', this.movie.id)
-    }
+      const likeButton = document.getElementById('like-button')
+      const childTag = likeButton.children[0]
+      const val = this.isLike ? 'far fa-heart' : 'fas fa-heart'
+      childTag.setAttribute('class', val)
+    }   
   }
 }
 </script>
@@ -109,7 +105,7 @@ export default {
 .movieoverview-line {
   color: white;
 }
-.moviedetail-like-button {
+/* .moviedetail-like-button {
   color:red;
   font-size: 40px;
 }
@@ -117,6 +113,6 @@ export default {
   background-color: black;
   color: red;
   font-size: 40px;
-}
+} */
 
 </style>
