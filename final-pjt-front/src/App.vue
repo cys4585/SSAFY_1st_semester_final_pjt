@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <!-- 탭 네브바 -->
-    <!-- <h1 id="title">Movie</h1> -->
+    <img class="movie-title" src="waterpurple2.jpg" alt="title">
     <nav>
       <div id="nav">
         <span v-if="loginUsername">
-          <router-link :to="{ name: 'MovieList' }" class="text-decoration-none">Movie</router-link> .
-          <router-link :to="{ name: 'Recommend' }" class="text-decoration-none">Recommend</router-link> .
-          <router-link :to="{ name: 'PostList' }" class="text-decoration-none">Community</router-link> .
-          <router-link :to="{ name: 'MyPage' }" class="text-decoration-none">MyPage</router-link> .
-          <router-link @click.native="logout" to="#" class="text-decoration-none">Logout</router-link>
+          <router-link :to="{ name: 'MovieList' }" class="nav-margin text-decoration-none">Movie</router-link> 
+          <router-link :to="{ name: 'Recommend' }" class="nav-margin text-decoration-none">Recommend</router-link> 
+          <router-link :to="{ name: 'PostList' }" class="nav-margin text-decoration-none">Community</router-link> 
+          <router-link :to="{ name: 'MyPage' }" class="nav-margin account-nav-right text-decoration-none">MyPage</router-link> 
+          <router-link @click.native="logout" to="#" class="nav-margin account-nav-right text-decoration-none">Logout</router-link>
         </span>
         <span v-else>
-          <router-link :to="{ name: 'Login' }" class="text-decoration-none">Login</router-link>
+          <router-link :to="{ name: 'Login' }" class="nav-margin account-nav-right text-decoration-none">Login</router-link>
         </span>
       </div>
       <router-view/>
@@ -66,7 +66,12 @@ export default {
   margin-left: 40px;
   padding: 20px;
 }
-
+.nav-margin {
+  margin-right: 15px;
+}
+.account-nav-right {
+  float: right;
+}
 #nav a {
   font-weight: bold;
   color: #6a7d91;
@@ -84,8 +89,11 @@ export default {
   text-decoration: none;
 }
 
-
 .dropdown-menu {
   background-color: black;
+}
+.movie-title {
+  height: 70%;
+  width: 100%;
 }
 </style>

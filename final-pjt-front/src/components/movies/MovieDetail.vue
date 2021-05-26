@@ -30,7 +30,6 @@
         <br>
         <hr class="movieoverview-line">
       </div>
-
       <!-- 댓글 -->
       <div>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">평점등록하기</button>
@@ -92,6 +91,8 @@ export default {
 
 .moviedetail {
   display: flex;
+  border: solid;
+  border-color: aliceblue;
 
 }
 .moviedetail-title {
@@ -112,14 +113,8 @@ export default {
 .movieoverview-line {
   color: white;
 }
-/* .moviedetail-like-button {
+.moviedetail-like-button {
   color:red;
   font-size: 40px;
 }
-.moviedetail-unlike-button {
-  background-color: black;
-  color: red;
-  font-size: 40px;
-} */
-
 </style>

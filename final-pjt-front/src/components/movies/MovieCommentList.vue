@@ -1,13 +1,23 @@
 <template>
   <div>
-    <h3>MovieCommentList.vue</h3>
-    <MovieCommentCard
-      v-for="(comment, idx) in commentList"
-      :key="idx"
-      :comment="comment"
-      :movieId="movieId"
-    />
-    
+    <table class="table table-hover moviecomment-line-color">
+      <thead>
+        <tr class="moviecomment-line-color">
+          <th scope="col">별점</th>
+          <th scope="col">ID</th>
+          <th scope="col">한줄평</th>
+          <!-- class="post" 좋아요 수 <th scope="col">Likes</th> -->
+        </tr>
+      </thead>
+      <tbody class="post">
+        <MovieCommentCard
+          v-for="(comment, idx) in commentList"
+          :key="idx"
+          :comment="comment"
+          :movieId="movieId"
+        />
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -37,5 +47,7 @@ export default {
 </script>
 
 <style>
-
+.moviecomment-line-color {
+  color: rgba(223, 238, 252, 0.781);
+}
 </style>

@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <h4>MovieCommentCard.vue</h4>
-    <!-- {{ comment }} -->
-    <div :id="'movie-comment'+comment.id">
-      점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
-    </div>
+  <tr :id="'movie-comment'+comment.id">
+    <th scope="row">{{ comment.score }}</th> 
+    <th>{{ comment.username }}</th> 
+    <th>{{ comment.comment }}</th>
+    
     <div v-if="loginUsername === comment.username" class="dropdown moviecomment-dropdown d-inline">
       <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
       <div class="dropdown-menu">
@@ -29,8 +28,7 @@
         :oldComment="comment"
       />   
     </div>
-    
-  </div>
+  </tr>
   
 </template>
 

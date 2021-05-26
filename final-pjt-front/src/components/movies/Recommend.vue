@@ -1,7 +1,6 @@
 <template>
   <div>
     <h2>Recommend.vue</h2>
-
     <ul>
       <li>회원이 좋아요한 MovieList에서 하나 random 추천</li>
       <li>장르별 각 하나씩 random 추천</li>
@@ -33,8 +32,9 @@ export default {
     }
   },
 }
+
+
 </script>
 
 <style>
-
 </style>

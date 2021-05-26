@@ -1,17 +1,27 @@
 <template>
-  <div>
-    <!-- <h4>PostCommentCard.vue</h4> -->
-    <!-- {{ comment }} -->
-    {{ comment.username }} : {{ comment.content }}
-      <!-- <button class="btn btn-warning" @click="">수정</button> -->
-      <button 
-        v-if="loginUsername === comment.username"
-        class="btn postcomment-delete-button" 
-        @click="deleteComment"
+  <tr>
+    <th scope="row">{{ comment.username }}</th>
+    <th>{{ comment.content }}</th>
+    <!-- 댓글 삭제 수정버튼 -->
+    <div class="dropdown postcomment-dropdown d-inline">
+      <button class="btn postcomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
+      <div class="dropdown-menu">
+        <button 
+          v-if="loginUsername === comment.username"
+          class="btn dropdown-item postcomment-update-button"
         >
-        <i class="fas fa-trash-alt"></i>
-      </button>
-  </div>
+          수정
+        </button>
+        <button 
+          v-if="loginUsername === comment.username"
+          class="btn postcomment-delete-button dropdown-item" 
+          @click="deleteComment"
+          >
+          삭제
+        </button>
+      </div>
+    </div>         
+  </tr>
 </template>
 
 <script>
@@ -40,14 +50,18 @@ export default {
 </script>
 
 <style>
-/* .moviecomment-dropdown {
-
-} */
-
-
-
-.postcomment-delete-button {
-  background-color: black;
+.postcomment-dropdown-button {
   color: aliceblue;
+}
+.postcomment-update-button {
+  background-color: aliceblue;
+  color: black;
+}
+.postcomment-delete-button {
+  background-color: aliceblue;
+  color: black;
+}
+.dropdown-item {
+  width: 70px;
 }
 </style>

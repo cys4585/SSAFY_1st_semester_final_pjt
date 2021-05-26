@@ -1,13 +1,24 @@
 <template>
   <div>
-    <h3>PostCommentList.vue</h3>
-    <PostCommentCard
-      v-for="(comment, idx) in commentList"
-      :key="idx"
-      :comment="comment"
-      :postId="postId"
-    />
+    <table class="table table-hover moviecomment-line-color">
+      <thead>
+        <tr class="moviecomment-line-color">
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <!-- class="post" 좋아요 수 <th scope="col">Likes</th> -->
+        </tr>
+      </thead>
+      <tbody class="post">
+        <PostCommentCard
+          v-for="(comment, idx) in commentList"
+          :key="idx"
+          :comment="comment"
+          :postId="postId"
+        />
+      </tbody>
+    </table>
   </div>
+
 </template>
 
 <script>
