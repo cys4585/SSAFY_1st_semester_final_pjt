@@ -102,6 +102,7 @@ export default new Vuex.Store({
       state.postComments.push(comment)
     },
     UPDATE_POST_COMMENT: function (state, comment) {
+      // console.log('mutation')
       const idx = state.postComments.findIndex(postComment => postComment.id === comment.id)
       state.postComments.splice(idx, 1, comment)
     },
@@ -154,6 +155,26 @@ export default new Vuex.Store({
       localStorage.removeItem('jwt')
       commit('SET_USERNAME', null)
       router.push({ name: 'Login' })
+    },
+    signout: function ({ commit }, password) {
+      axios({
+        method: 'delete',
+        url: 'http://127.0.0.1:8000/accounts/user/',
+        data: {
+          password,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(() => {
+          localStorage.removeItem('jwt')
+          commit('SET_USERNAME', null)
+          router.push({ name: 'Login' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     getMoviesFromServer: function ({ commit }) {
       console.log('getMoviesFromServer() 실행')

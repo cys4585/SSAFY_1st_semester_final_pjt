@@ -55,7 +55,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['loginUsername'])
+    ...mapState(['loginUsername']),
   },
   methods: {
     deleteComment: function () {
@@ -77,6 +77,11 @@ export default {
     updatePostComment: function () {
       this.$store.dispatch('updatePostComment', { postId: this.postId, commentId: this.comment.id, content: this.editContent })
       this.cancelEdit()
+    }
+  },
+  watch: {
+    comment: function () {
+      this.editContent = this.comment.content
     }
   }
 
