@@ -3,14 +3,14 @@
     <!-- <h4>PostCommentCard.vue</h4> -->
     <!-- {{ comment }} -->
     {{ comment.username }} : {{ comment.content }}
-    <!-- <button class="btn btn-warning" @click="">수정</button> -->
-    <button 
-      v-if="loginUsername === comment.username"
-      class="btn postcomment-delete-button" 
-      @click="deleteComment"
-      >
-      <i class="fas fa-trash-alt"></i>
-    </button>
+      <!-- <button class="btn btn-warning" @click="">수정</button> -->
+      <button 
+        v-if="loginUsername === comment.username"
+        class="btn postcomment-delete-button" 
+        @click="deleteComment"
+        >
+        <i class="fas fa-trash-alt"></i>
+      </button>
   </div>
 </template>
 
@@ -40,6 +40,12 @@ export default {
 </script>
 
 <style>
+/* .moviecomment-dropdown {
+
+} */
+
+
+
 .postcomment-delete-button {
   background-color: black;
   color: aliceblue;
