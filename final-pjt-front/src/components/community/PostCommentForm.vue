@@ -25,6 +25,7 @@ export default {
   methods: {
     createPostComment: function() {
       this.$store.dispatch('createPostComment', { postId: this.postId, content: this.comment })
+      this.comment = ''
     },
   },
 }

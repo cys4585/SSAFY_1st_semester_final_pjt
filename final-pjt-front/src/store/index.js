@@ -39,6 +39,12 @@ export default new Vuex.Store({
         // console.log(postId)
         return state.posts.find(post => post.id === postId)
       }
+    },
+    getMovieCommentById: function (state) {
+      console.log('getters 실행')
+      return function (commentId) {
+        return state.movieComments.find(comment => comment.id === commentId)
+      }
     }
   },
   mutations: {
@@ -56,6 +62,15 @@ export default new Vuex.Store({
     },
     CREATE_MOVIE_COMMENT: function (state, comment) {
       state.movieComments.push(comment)
+    },
+    UPDATE_MOVIE_COMMENT: function (state, comment) {
+      const idx = state.movieComments.findIndex(movieComment => movieComment.id === comment.id)
+      // state.movieComments[idx] = comment
+      // 위처럼 하면 computed가 인식을 못함
+      // splice를 하면 computed가 인식을 함
+      // 이유(예상) : splice를 하면 요소가 제거되고, 중간에 삽입되는 형태라 요소 덩어리가 바뀌는 것 
+      state.movieComments.splice(idx, 1, comment)
+      // console.log('mutation: UPDTAE_MOVIE_COMMENT: comment changed')
     },
     SET_MOVIE_LIKE_STATUS: function (state, likeStatus) {
       state.movieLikeStatus = likeStatus.liked
@@ -206,6 +221,27 @@ export default new Vuex.Store({
         .then(res => {
           // console.log(res)
           commit('CREATE_MOVIE_COMMENT', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+          // alert('댓글(평점)은 하나만 작성할 수 있습니다.')
+        })
+    },
+    updateMovieComment: function ({ commit }, { movieId, commentId, score, comment }) {
+      axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/movies/${movieId}/comment/${commentId}/`,
+        data: {
+          score,
+          comment,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          // console.log(res)
+          commit('UPDATE_MOVIE_COMMENT', res.data)
         })
         .catch(err => {
           console.log(err)

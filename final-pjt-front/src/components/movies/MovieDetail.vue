@@ -1,5 +1,7 @@
 <template>
   <div class="container moviedetail">
+    <!-- 여기부턴 모달 테스트 구간 -->
+
     <div>
       <!-- <h2 class="moviedetail-title">영화 정보</h2> -->
     </div>
@@ -31,8 +33,12 @@
 
       <!-- 댓글 -->
       <div>
-        <MovieCommentForm :movieId="movie.id" />
-        <MovieCommentList :movieId="movie.id" />
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">평점등록하기</button>
+
+        <MovieCommentForm 
+          :movieId="Number(this.$route.params.movieId)"
+        />
+        <MovieCommentList :movieId="Number(this.$route.params.movieId)" />
       </div>
     </div>
   </div>
@@ -49,6 +55,7 @@ export default {
     MovieCommentForm,
   }, 
   created: function () {
+    // console.log('movie detail page is open', Number(this.$route.params.movieId))
     // console.log('detail.vue created')
     // console.log(this.$route.params)
     this.$store.dispatch('getMovieFromServer', Number(this.$route.params.movieId))

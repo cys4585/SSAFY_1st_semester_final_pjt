@@ -1,18 +1,18 @@
 <template>
   <div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" :id="'movieCommentUpdateModal'+comment.id" tabindex="-1" :aria-labelledby="'exampleModalLabel'+comment.id" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">평점 등록</h5>
+            <h5 class="modal-title" :id="'exampleModalLabel'+comment.id">수정</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body">
               <!-- 선택 -->
               <div class="mb-3">
-                <select v-model="score">
+                <select v-model="comment.score">
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -28,12 +28,12 @@
               </div>
               <!-- 댓글 작성란 -->
               <div class="mb-3">
-                <input v-model="comment" @keyup.enter="clickSubmitButton" type="text" class="form-control moviecommentform d-inline" id="formGroupExampleInput" placeholder="감상평을 남겨주세요.">
+                <input v-model="comment.comment" @keyup.enter="clickSubmitButton" type="text" class="form-control moviecommentform d-inline" :id="'formGroupExampleInput'+oldComment.id" placeholder="감상평을 남겨주세요.">
               </div>
           </div>
           <!-- 작성 버튼 -->
           <div class="modal-footer">
-            <button type="button" id="submitButton" @click="createMovieComment" class="btn moviecomment-button" data-bs-dismiss="modal">작성</button>
+            <button type="button" :id="'submitButton'+oldComment.id" @click="updateMovieComment" class="btn moviecomment-button" data-bs-dismiss="modal">작성</button>
           </div>
         </div>
       </div>
@@ -44,23 +44,29 @@
 <script>
 
 export default {
-  name: 'MovieCommentForm',
+  name: 'MovieCommentUpdateForm',
 
   data: function () {
     return {
       comment: null,
-      score: null,
     }
   },
   props: {
     movieId: {
       type: Number
-    }
+    },
+    oldComment: {
+      type: Object
+    },
+  },
+  created: function () {
+    this.comment = this.oldComment
+    // console.log(this.oldComment)
+    // console.log(this.comment)
   },
   methods: {
-    createMovieComment: function () {
-      this.$store.dispatch('createMovieComment', { movieId: this.movieId, score: this.score, comment: this.comment })
-      this.comment = ''
+    updateMovieComment: function () {
+      this.$store.dispatch('updateMovieComment', { movieId: this.movieId, commentId: this.comment.id, score: this.comment.score, comment: this.comment.comment })
     },
     clickSubmitButton: function () {
       document.getElementById('submitButton').click()

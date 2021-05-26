@@ -7,6 +7,7 @@
       :comment="comment"
       :movieId="movieId"
     />
+    
   </div>
 </template>
 
@@ -24,6 +25,7 @@ export default {
     }
   },
   created: function () {
+    // console.log('movie comment list vue is created', this.movieId)
     this.$store.dispatch('getMovieCommentListFromServer', this.movieId)
   },
   computed: {
