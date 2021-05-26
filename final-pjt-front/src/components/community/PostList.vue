@@ -3,6 +3,7 @@
     <h2 class="community-title">COMMUNITY</h2>
     <!-- <h2>PostList.vue</h2> -->
     
+    <button class="btn community-post-button" @click="postForm">New Post</button>
     <table class="table post-list">
       <thead>
         <tr>
@@ -20,7 +21,6 @@
         />
       </tbody>
     </table>
-    <button class="btn community-post-button" @click="postForm">New Post</button>
 
   </div>
 </template>
@@ -62,7 +62,7 @@ export default {
   border-color: blueviolet;
   color: aliceblue;
   float: right;
-  margin-bottom: 30px;
-  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-top: 80px;
 }
 </style>

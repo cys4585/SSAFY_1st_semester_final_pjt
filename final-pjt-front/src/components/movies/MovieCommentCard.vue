@@ -3,14 +3,20 @@
     <h4>MovieCommentCard.vue</h4>
     <!-- {{ comment }} -->
     점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
-    <!-- <button class="btn btn-warning" @click="">수정</button> -->
-    <button 
-      v-if="loginUsername === comment.username"
-      class="btn moviecomment-delete-button" 
-      @click="deleteComment"
-      >
-      <i class="fas fa-trash-alt"></i>
-    </button>
+    <!-- <button class="btn moviecomment-update-button dropdown-item" @click="">수정</button> -->
+    <div class="dropdown moviecomment-dropdown d-inline">
+      <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
+      <div class="dropdown-menu">
+        <button class="btn dropdown-item moviecomment-update-button">수정</button>
+        <button 
+          v-if="loginUsername === comment.username"
+          class="btn moviecomment-delete-button dropdown-item" 
+          @click="deleteComment"
+          >
+          삭제
+        </button>
+      </div>       
+    </div>
   </div>
 </template>
 
@@ -40,8 +46,19 @@ export default {
 </script>
 
 <style>
-.moviecomment-delete-button {
-  background-color: black;
+.moviecomment-dropdown-button {
   color: aliceblue;
 }
+.moviecomment-update-button {
+  background-color: aliceblue;
+  color: black;
+}
+.moviecomment-delete-button {
+  background-color: aliceblue;
+  color: black;
+}
+.dropdown-item {
+  width: 70px;
+}
+
 </style>
