@@ -2,7 +2,6 @@
   <div class="container postdetail">
     <div class="postdetail-margin">
       <!-- 전체를 네모 form안에 넣기 -->
-      <h2>PostDetail.vue</h2>
       <p>작성자 : {{ post.username }}</p>
       <p>제목 : {{ post.title }}</p>
       <p>내용 : {{ post.content }}</p>
@@ -12,17 +11,9 @@
         <button class="btn post-delete-button" @click="deletePost">삭제</button>
       </div>
       <div>
-        <button 
-          class="btn postdetail-unlike-button" @click="postLike"
-          v-if="isLike"
-          >
-          <i class="far fa-heart"></i>
-        </button>
-        <button 
-          class="btn postdetail-like-button" @click="postLike"
-          v-else
-          >
-          <i class="fas fa-heart"></i>
+        <button class="btn moviedetail-like-button" id="like-button" @click="postLike">
+          <i v-if="isLike" class="fas fa-heart"></i>
+          <i v-else class="far fa-heart"></i>
         </button>
         <p>좋아요 {{ likeCount }}개</p>
       </div>
@@ -69,8 +60,13 @@ export default {
     },
     postLike: function () {
       this.$store.dispatch('postLike', this.post.id)
-    }
+      const likeButton = document.getElementById('like-button')
+      const childTag = likeButton.children[0]
+      const val = this.isLike ? 'far fa-heart' : 'fas fa-heart'
+      childTag.setAttribute('class', val)
+    }   
   },
+
 }
 </script>
 
@@ -93,11 +89,7 @@ export default {
   color:red;
   font-size: 30px;
 }
-.postdetail-unlike-button {
-  background-color: black;
-  color: red;
-  font-size: 30px;
-}
+
 .post-update-button {
   background-color: black;
   /* border-color: rgb(0, 183, 255); */

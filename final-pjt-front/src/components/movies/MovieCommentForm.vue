@@ -1,28 +1,8 @@
 <template>
   <div>
-    <h3>MovieCommentForm.vue</h3>
-    <select v-model="score">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
-    <div class="mb-3">
-      <input  v-model="comment" @keyup.enter="createMovieComment" type="text" class="form-control moviecommentform d-inline" id="formGroupExampleInput" placeholder="댓글을 작성해주세요.">
-      <button @click="createMovieComment" class="btn moviecomment-button">작성</button>
-    </div>
-
-
   <!-- 여기부턴 모달 테스트 구간 -->
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">평점등록하기</button>
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade margin-test" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -100,6 +80,9 @@ export default {
   background-color: black;
   border-color: blueviolet;
   color: aliceblue;
+}
+.margin-test {
+  margin-top: 300px;
 }
 
 

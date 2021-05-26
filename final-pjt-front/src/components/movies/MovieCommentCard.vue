@@ -1,28 +1,30 @@
 <template>
-  <div>
-    <h4>MovieCommentCard.vue</h4>
+    <tr :id="'movie-comment'+comment.id">
     <!-- {{ comment }} -->
-    <div :id="'movie-comment'+comment.id">
-      점수 : {{ comment.score }}| {{ comment.username }}| {{ comment.comment }}
-    </div>
-    <div class="dropdown moviecomment-dropdown d-inline">
-      <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
-      <div class="dropdown-menu">
-        <button 
-          class="btn dropdown-item moviecomment-update-button"
-        >
-          수정
-        </button>
-        <button 
-          v-if="loginUsername === comment.username"
-          class="btn moviecomment-delete-button dropdown-item" 
-          @click="deleteComment"
+      <th scope="row">{{ comment.score }}</th> 
+      <th>{{ comment.username }}</th> 
+      <th>{{ comment.comment }}</th>
+      
+    <!-- 댓글 삭제 수정버튼 -->
+      <div class="dropdown moviecomment-dropdown d-inline">
+        <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
+        <div class="dropdown-menu">
+          <button 
+            v-if="loginUsername === comment.username"
+            class="btn dropdown-item moviecomment-update-button"
           >
-          삭제
-        </button>
-      </div>       
-    </div>
-  </div>
+            수정
+          </button>
+          <button 
+            v-if="loginUsername === comment.username"
+            class="btn moviecomment-delete-button dropdown-item" 
+            @click="deleteComment"
+            >
+            삭제
+          </button>
+        </div>       
+      </div>
+    </tr>
   
 </template>
 
