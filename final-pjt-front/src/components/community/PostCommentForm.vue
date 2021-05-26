@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="mb-3">
-      <h3>PostCommentForm.vue</h3>
       <input  v-model="comment" @keyup.enter="createPostComment" type="text" class="form-control d-inline postcommentform" id="formGroupExampleInput" placeholder="댓글을 작성해주세요.">
-      <button @click="createPostComment" class="btn postcomment-button">작성</button>
+      <button @click="createPostComment" class="btn postcomment-button">댓글</button>
     </div>
   </div>
 
@@ -33,7 +32,7 @@ export default {
 
 <style>
 .postcommentform {
-  width: 90%;
+  width: 88%;
   margin-right: 10px;
 }
 
@@ -41,5 +40,9 @@ export default {
   background-color: black;
   border-color: blueviolet;
   color: aliceblue;
+}
+
+.formGroupExampleInput {
+  display: inline;
 }
 </style>

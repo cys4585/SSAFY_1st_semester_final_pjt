@@ -95,10 +95,13 @@ def update_delete_comment(request, post_id, comment_id):
     if not request.user.post_comments.filter(pk=comment_id).exists():
         return Response({'detail': '권한이 없습니다.'}, status=status.HTTP_403_FORBIDDEN)
 
+    comment = get_object_or_404(PostComment, pk=comment_id)
     if request.method == 'PUT':
-        pass
+        serializer = PostCommentSerializer(comment, data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
     else:
-        comment = get_object_or_404(PostComment, pk=comment_id)
         comment.delete()
         return Response(
             {'delete': f'{comment_id}번 댓글 삭제'}, 

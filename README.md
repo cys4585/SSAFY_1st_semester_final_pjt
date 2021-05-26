@@ -108,7 +108,11 @@
 
 - 0527 (목)
 
-  - 인피니티 스크롤, ppt 및 발표준비
+  - Post Comment 수정 
+  - 회원 탈퇴
+  - Like Movie List, Commented Movie List
+  - 인피니티 스크롤
+  - ppt 및 발표준비
 
 - 0528 (금)
 

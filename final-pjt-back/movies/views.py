@@ -150,5 +150,5 @@ def recommend_movie(request):
                 serializer = MovieSerializer(rec_movie)
                 # print(type(serializer.data))
                 return Response(serializer.data, status=status.HTTP_200_OK)
-                
+
     return Response(status=status.HTTP_204_NO_CONTENT)

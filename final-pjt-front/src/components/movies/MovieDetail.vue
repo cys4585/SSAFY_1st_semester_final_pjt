@@ -32,7 +32,15 @@
       </div>
       <!-- 댓글 -->
       <div>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">평점등록하기</button>
+        <button 
+          type="button" 
+          class="btn btn-primary" 
+          data-bs-toggle="modal" 
+          data-bs-target="#exampleModal" 
+          data-bs-whatever="@mdo"
+          >
+            평점등록하기
+          </button>
 
         <MovieCommentForm 
           :movieId="Number(this.$route.params.movieId)"
