@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <h3>MyMovieList.vue</h3>
-    <button @click="toggleLikeMoviesBtn">좋아요 한 영화s</button>
-    <button @click="toggleCommentMoviesBtn">후기를 남긴 영화s</button>
+  <div id="navb">
+    <button class="btn mylist-like" @click="toggleLikeMoviesBtn">좋아요 한 영화s</button>
+    <button class="btn mylist-review" @click="toggleCommentMoviesBtn">후기를 남긴 영화s</button>
     <MyLikedMovieList
       v-show="isShowLikeMovies"
     />
@@ -45,5 +44,20 @@ export default {
 </script>
 
 <style>
+#nab a {
+  color: #775aad;
+}
+.mylist-like {
+  margin-left: 60px;
 
+  background-color: rgb(72, 38, 206);
+  color: aliceblue;
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+.mylist-review {
+  background-color: rgb(72, 38, 206);
+  color: aliceblue;
+  margin-bottom: 30px;
+}
 </style>

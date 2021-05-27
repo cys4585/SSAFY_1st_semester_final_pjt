@@ -6,35 +6,35 @@
     <div class="recommend-carddeck">
       <!-- 카드1 -->  
       <button 
-        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        @click="getRecommendedMovieFromServer" class="btn btn-link recommend-card" 
         data-bs-toggle="modal" data-bs-target="#exampleModal"
       >
         <img src="./tarot.jpg" class="recommend-tarot" alt="">
       </button>
       <!-- 카드2 -->
       <button 
-        @click="getRecommendedMovieFromServer" class="btn recommend-card"
+        @click="getRecommendedMovieFromServer" class="btn btn-link recommend-card"
         data-bs-toggle="modal" data-bs-target="#exampleModal"
       >
         <img src="./tarot.jpg" class="recommend-tarot" alt="">
       </button>
       <!-- 카드3 -->
       <button 
-        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        @click="getRecommendedMovieFromServer" class="btn btn-link recommend-card" 
         data-bs-toggle="modal" data-bs-target="#exampleModal"
       >
         <img src="./tarot.jpg" class="recommend-tarot" alt="">
       </button>
       <!-- 카드4 -->
       <button 
-        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        @click="getRecommendedMovieFromServer" class="btn btn-link recommend-card" 
         data-bs-toggle="modal" data-bs-target="#exampleModal"
       >
         <img src="./tarot.jpg" class="recommend-tarot" alt="">
       </button>
       <!-- 카드5 -->
       <button 
-        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        @click="getRecommendedMovieFromServer" class="btn btn-link recommend-card" 
         data-bs-toggle="modal" data-bs-target="#exampleModal"
       >
         <img src="./tarot.jpg" class="recommend-tarot" alt="">
@@ -153,7 +153,10 @@ export default {
 /* .recommend-modal-background {
   background-color: 
 } */
-
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
 
 /* 타로카드 CSS */
 
@@ -162,6 +165,7 @@ export default {
   margin-top: 30px;
   margin-bottom: 800px;
   margin-left: 500px;
+  
 }
 
 .recommend-card {

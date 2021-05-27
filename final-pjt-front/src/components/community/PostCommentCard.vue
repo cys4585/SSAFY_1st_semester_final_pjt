@@ -110,5 +110,8 @@ export default {
 .comment-content {
   margin: 0px;
 }
-
+.dropdown-menu {
+  width: 32px;
+  min-width: 0;
+}
 </style>
