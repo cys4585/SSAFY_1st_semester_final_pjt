@@ -2,9 +2,10 @@
   <div class="container postdetail">
     <div class="postdetail-margin">
       <!-- 전체를 네모 form안에 넣기 -->
-      <p class="postdtail-user">작성자 : {{ post.username }}</p>
-      <p class="postdtail-title">제목 : {{ post.title }}</p>
-      <p class="postdtail-content">내용 : {{ post.content }}</p>
+      <p class="postdtail-title">{{ post.title }}</p>
+      <p class="postdtail-user">{{ post.username }}</p>
+      <hr class="postdetail-hr">
+      <p class="postdtail-content">{{ post.content }}</p>
       <hr>
       <div v-if="post.username === loginUsername" class="postdetail-button">
         <button class="btn post-update-button" @click="postForm">수정</button>
@@ -57,7 +58,7 @@ export default {
       const childTag = likeButton.children[0]
       const val = this.isLike ? 'fas fa-heart' : 'far fa-heart'
       childTag.setAttribute('class', val)
-    }
+    },
   },
   methods: {
     postForm: function () {
@@ -80,6 +81,7 @@ export default {
   border-width: 1px;
   border-radius: 15px;
   margin-top: 50px;
+  margin-bottom: 80px;
 }
 .postdtail-user {
   color: aliceblue;
@@ -104,7 +106,9 @@ export default {
   color:red;
   font-size: 30px;
 }
-
+.postdetail-hr {
+  color: aliceblue;
+}
 .post-update-button {
   background-color: black;
   /* border-color: rgb(0, 183, 255); */
