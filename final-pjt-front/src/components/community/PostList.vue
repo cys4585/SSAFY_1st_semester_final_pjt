@@ -3,7 +3,7 @@
     <h2 class="community-title">COMMUNITY</h2>
     <!-- <h2>PostList.vue</h2> -->
     
-    <button class="btn community-post-button" @click="postForm">New Post</button>
+    <button class="btn community-post-button" @click="postForm">글쓰기</button>
     <table class="table post-list">
       <thead>
         <tr>

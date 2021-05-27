@@ -8,7 +8,7 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-        <textarea v-model="content" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+        <textarea v-model="content" class="form-control" id="exampleFormControlTextarea1" placeholder="내용을 입력하세요." rows="10"></textarea>
       </div>
       <button class="btn postcreate-button" style="float: right;" @click="createPost">작성</button>
   <!--     
@@ -40,8 +40,9 @@ export default {
 .postcreateform {
   background-image: url('./PostCreateForm.jpeg');
   background-size: 100%;
-  height: 700px;
+  height: 1000px;
   padding-top: 130px;
+  color: blueviolet;
 }
 .postcreate-button {
   background-color: black;

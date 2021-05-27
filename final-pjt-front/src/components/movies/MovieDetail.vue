@@ -80,13 +80,21 @@ export default {
       return 'https://image.tmdb.org/t/p/w500' + this.movie.poster_path
     },
   },
+  watch: {
+    isLike: function () {
+      const likeButton = document.getElementById('like-button')
+      const childTag = likeButton.children[0]
+      const val = this.isLike ? 'fas fa-heart' : 'far fa-heart'
+      childTag.setAttribute('class', val)
+    },
+  },
   methods: {
     movieLike: function () {
       this.$store.dispatch('movieLike', this.movie.id)
-      const likeButton = document.getElementById('like-button')
-      const childTag = likeButton.children[0]
-      const val = this.isLike ? 'far fa-heart' : 'fas fa-heart'
-      childTag.setAttribute('class', val)
+      // const likeButton = document.getElementById('like-button')
+      // const childTag = likeButton.children[0]
+      // const val = this.isLike ? 'far fa-heart' : 'fas fa-heart'
+      // childTag.setAttribute('class', val)
     }   
   }
 }

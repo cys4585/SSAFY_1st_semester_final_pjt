@@ -75,10 +75,13 @@ export default {
 .moviecomment-delete-button {
   background-color: aliceblue;
   color: black;
-
 }
+.dropdown-menu {
+  width: 80px;
+}
+
 .dropdown-item {
-  width: 70px;
+  width: 30px;
 }
 .dropdown-menu {
   width: 32px;
