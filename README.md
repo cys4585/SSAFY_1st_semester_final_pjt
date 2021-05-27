@@ -73,9 +73,11 @@
 
 ## * 각자 맡은 작업
 
-영수: 백엔드 + 프론트엔드
+- 영수: 백엔드 + 프론트엔드
+  - Django (rest_framework, orm, jwt, ...) : API SERVER 구축
+  - vue js (router, vuex) : AXIOS 요청을 통한 비동기 웹페이지 구축
 
-보람: 프론트엔드 + HTML/CSS
+- 보람: 프론트엔드 + HTML/CSS
 
 
 
