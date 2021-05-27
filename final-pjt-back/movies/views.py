@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import get_list_or_404, render, get_object_or_404
 from django.http import JsonResponse
 
@@ -157,3 +158,29 @@ def recommend_movie(request):
             # print(type(serializer.data))
             return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def liked_movies(request):
+    user = request.user
+    movies = user.like_movies.all()
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAuthenticated])
+def commented_movies(request):
+    user = request.user
+    comments = user.movie_comments.all()
+
+    # object를 QuerySet이 아닌 list에 담아도
+    # serializing이 잘 된다...
+    movies = []
+    for comment in comments:
+        movies.append(comment.movie)
+    serializer = MovieSerializer(movies, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)

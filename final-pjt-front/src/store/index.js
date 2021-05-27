@@ -13,6 +13,8 @@ export default new Vuex.Store({
     loginUsername: null,
     movies: null,
     movie: null,
+    likedMovies: null,
+    commentedMovies: null,
     movieComments: [],
     movieCommentEditActive: false,
     editMovieComment: null,
@@ -43,7 +45,6 @@ export default new Vuex.Store({
       }
     },
     getMovieCommentById: function (state) {
-      console.log('getters 실행')
       return function (commentId) {
         return state.movieComments.find(comment => comment.id === commentId)
       }
@@ -58,6 +59,12 @@ export default new Vuex.Store({
     },
     SET_MOVIE: function (state, movie) {
       state.movie = movie
+    },
+    SET_LIKED_MOVIES: function (state, movies) {
+      state.likedMovies = movies
+    },
+    SET_COMMENTED_MOVIES: function (state, movies) {
+      state.commentedMovies = movies
     },
     SET_MOVIE_COMMENTS: function (state, comments) {
       state.movieComments = comments
@@ -183,6 +190,36 @@ export default new Vuex.Store({
           localStorage.removeItem('jwt')
           commit('SET_USERNAME', null)
           router.push({ name: 'Login' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getLikedMovieListFromServer: function ({ commit }) {
+      axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/movies/liked/',
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          commit('SET_LIKED_MOVIES', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getCommentedMovieListFromServer: function ({ commit }) {
+      axios({
+        method: 'get',
+        url: 'http://127.0.0.1:8000/movies/commented/',
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          commit('SET_COMMENTED_MOVIES', res.data)
         })
         .catch(err => {
           console.log(err)

@@ -51,9 +51,6 @@ export default {
       type: Number,
     }
   },
-  created: function () {
-    console.log(this.comment.id)
-  },
   computed: {
     ...mapState(['loginUsername']),
   },

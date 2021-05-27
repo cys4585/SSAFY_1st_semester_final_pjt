@@ -17,7 +17,7 @@ import MyPage from '@/components/accounts/MyPage.vue'
 import Signup from '@/components/accounts/Signup.vue'
 import Signout from '@/components/accounts/Signout.vue'
 import Login from '@/components/accounts/Login.vue'
-import LikeMovieList from '@/components/accounts/LikeMovieList.vue'
+import MyMovieList from '@/components/accounts/MyMovieList.vue'
 
 
 Vue.use(VueRouter)
@@ -53,7 +53,7 @@ const routes = [
       { path: 'login', name: 'Login', component: Login, meta: { authRequired: false }, },
       { path: 'mypage', name: 'MyPage', component: MyPage, meta: { authRequired: true }, 
         children: [
-          { path: 'mymovielist', name: 'LikeMovieList', component: LikeMovieList, },
+          { path: 'mymovieList', name: 'MyMovieList', component: MyMovieList, },
           { path: 'signout', name: 'Signout', component: Signout, },
         ]
       },
