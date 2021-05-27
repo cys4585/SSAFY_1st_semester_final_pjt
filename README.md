@@ -2,21 +2,82 @@
 
 
 
-## 1. PPT (...기획......;; 초초초초 간략)
+## 1.  팀원 정보 및 업무 분담
 
-[google sheet](https://docs.google.com/presentation/d/1RvIF_9Ck6xDtpFSgp0mAvlZCa06VRVh04FstW-k7dxQ/edit?ts=60a36d48#slide=id.gd9446e4414_1_14)
+- 최영수(팀장)
+
+  - Server Side (Django)
+
+  - Client Side 일부 (JS)
+
+- 유보람(팀원)
+  - Client Side (JS, HTML, CSS)
 
 
 
-## 2. ERD (Model)
+## 2. 목표 서비스 구현 및 실제 구현 정도
 
-![image-20210528002222891](README.assets/image-20210528002222891.png)
+1) 목표 서비스
+
+- 영화 정보 기반 추천 서비스 구성
+
+- 커뮤니티 서비스 구성
+- HTML, CSS, JavaScript, Vue.js, Django, REST API, DataBase 등을 활용한 실제 서비
+  스 설계
+- 서비스 관리 및 유지보수
 
 
 
-## 3. API URL
+2) 실제 구현
 
-1. movies app
+(1) 영화 정보 조회 
+
+- 최신순, 인기순, 평점순 및 장르에 따른 영화 전체목록 조회 가능
+
+- 각각의 영화에 대한 상세 정보조회와 '좋아요' 기능 및 평점을 포함한 리뷰기능 구현
+
+  
+
+(2) 영화 추천 서비스
+
+- 사용자의 '좋아요', '리뷰'를 기반으로 하여 영화 추천 서비스 제작
+
+- 사용자와 관련성 높은 영화데이터를 카드에 넣도록 설계. 이를 유저가 고르는 게임형식으로 구현
+
+  
+
+(3) 커뮤니티 서비스
+
+- 영화 정보와 관련된 대화를 할 수 있는 커뮤니티 기능을 구현
+
+- 로그인한 사용자만 글을 조회 / 생성 할 수 있으며 작성자 본인만 글을 수정/삭제 가능
+
+- 사용자는 작성된 게시글에 댓글을 작성할 수 있어야 하며 작성자 본인만 댓글을 삭제 가능
+
+  
+
+(4) 계정 서비스
+
+- 회원가입하여 로그인 한 사용자만 영화서비스를 이용가능하도록 구현
+- 회원가입한 사용자는 회원탈퇴기능을 이용하여 유저정보 삭제 가능
+
+- 사용자가 '좋아요', '리뷰'를 남긴 영화 데이터를 마이페이지에 저장하는  서비스 구현
+
+
+
+
+
+## 3. ERD (Model)
+
+![image-20210528001250525](README.assets/image-20210528001250525.png)
+
+
+
+
+
+## 4. API URL
+
+Movies app
 
 | HTTP verb | URL 패턴                                | 설명                 |
 | --------- | --------------------------------------- | -------------------- |
@@ -34,7 +95,7 @@
 
 
 
-2. community app
+Community app
 
 | HTTP verb | URL 패턴                                  | 설명                         |
 | --------- | ----------------------------------------- | ---------------------------- |
@@ -51,7 +112,7 @@
 
 
 
-3. Accounts
+Accunts app
 
 | HTTP verb | URL 패턴                 | 설명              |
 | --------- | ------------------------ | ----------------- |
@@ -63,90 +124,74 @@
 
 
 
-## 4. 컴포넌트 구조
+## 5. 컴포넌트 구조
 
-![컴포넌트](README.assets/컴포넌트.png)
-
-
+![image-20210527234946926](README.assets/image-20210527234946926.png)
 
 
 
-## * 각자 맡은 작업
-
-- 영수: 백엔드 + 프론트엔드
-  - Django (rest_framework, orm, jwt, ...) : API SERVER 구축
-  - vue js (router, vuex) : AXIOS 요청을 통한 비동기 웹페이지 구축
-
-- 보람: 프론트엔드 + HTML/CSS
 
 
 
-## * 일정
 
-- 0520 (목)
+## 6. 필수 기능에 대한 설명
 
-  - 기획 및 모델링 
+1) Account 
 
-- 0521 (금)
+- Signup 
 
-  - page 구조 잡기(vue) / 페이지별 필요한 데이터 확인 및 구현(django) / 모델링 완성
+- Login
 
-  - movie 페이지 디자인, signup, login 페이지 디자인
+- Logout
 
-- 0524 (월)
+- Signout
 
-  - movie detail, recommend, community 페이지 디자인
-  - 페이지별 데이터 무조건 가져올 수 있어야 한다. (movie, community 일부 완료)
+- My Movie List (Like base, Review base) 
 
-- 0525 (화)
+  
 
-  - community 마무리, recommend 아이디에이션, 로직 구현 (장르별 각각 1개씩 추천?)
-  - 부족한 페이지 더 완성도 높이기
-  - 아마 추가할 작업이 있을 것 같음...
+2) Movie
 
-- 0526 (수)
+- Movie List Read (전체 영화 조회, filtering(장르별), sorting(최신순, 인기순, 평점순)
 
-  - 댓글 수정, Movie Comment 한 계정당 하나씩만 달 수 있도록 
-  - My page 
-  - 회원탈퇴
-  - Post Comment 수정
-  - 댓글 평점 별 / 추천 카드 css 구현 / 무비리스트 filtering sorting css / My page css
+- Movie Detail
 
-- 0527 (목)
+- Movie Review CRUD
 
-  - Like Movie List, Commented Movie List
-  - 인피니티 스크롤
-  - ppt 및 발표준비
+- Movie Like
 
-- 0528 (금)
+- Movie Recommend
 
-  - 발표
+  
 
+3)Community
 
+- Post CRUD
 
-## * 프로젝트 중 공부한 내용들
+- Post List Read
+- Post Detail
+
+- Post 좋아요
+
+- Post Comment CRUD
 
 
 
-### Git
 
-- 항상 git은 vsCode로 관리합시다. (conflict 났을 때 merge를 쉽게 할 수 있음)
 
-- git 순서
-  - git add .
-  - git commit -m " ~~~ "
-  - git pull (local에 수정된 내용이 있다면 pull 전에 commit을 해줘야 한다.)
-  - git push (push 하기 전에 git repository에 pull할 게 있다면 pull 해줘야 한다.)
-
-- pull 할 때 conflict(충돌) 발생한 경우 
-  - merge 하고 
-  - git add .
-  - git commit -m "merge : ~~~~"
-  - git push
+## 7. 배포 서버 URL
 
 
 
-### 직렬화 & 역직렬화
+
+
+## 8. 기타 (느낀점 등)
+
+
+
+###  및 공부 내용
+
+#### 직렬화 & 역직렬화
 
 - 직렬화(serializing) : python data -> JSON
 
@@ -182,9 +227,7 @@
       - 아님 알아서 그냥 저장이 되나?
       - 아님 하나씩 꺼내서 저장을 해줘야 하나?
 
-
-
-### API 요청 / JSON 파일 생성 / DB loaddata
+#### API 요청 / JSON 파일 생성 / DB loaddata
 
 - TMDB API에 요청을 보내서  JSON 데이터 받아오기
 - .json 파일 생성, 받아온 JSON 데이터를 .json 파일에 저장하기
@@ -300,4 +343,39 @@ with open('movies.json', 'w') as f:
 ```bash
 $ python manage.py loaddata movies/fixtures/movies.json  
 ```
+
+
+
+### 일정
+
+- 0520 (목)
+  - 기획 및 모델링 
+- 0521 (금)
+  - page 구조 잡기(vue) / 페이지별 필요한 데이터 확인 및 구현(django) / 모델링 완성
+  - movie 페이지 디자인, signup, login 페이지 디자인
+- 0524 (월)
+  - movie detail, recommend, community 페이지 디자인
+  - 페이지별 데이터 무조건 가져올 수 있어야 한다. (movie, community 일부 완료)
+- 0525 (화)
+  - community 마무리, recommend 아이디에이션, 로직 구현 (장르별 각각 1개씩 추천?)
+  - 부족한 페이지 더 완성도 높이기
+  - 아마 추가할 작업이 있을 것 같음...
+- 0526 (수)
+  - 댓글 수정, Movie Comment 한 계정당 하나씩만 달 수 있도록 
+  - My page 
+  - 회원탈퇴
+  - Post Comment 수정
+  - 댓글 평점 별 / 추천 카드 css 구현 / 무비리스트 filtering sorting css / My page css
+- 0527 (목)
+  - Like Movie List, Commented Movie List
+  - 인피니티 스크롤
+  - ppt 및 발표준비
+- 0528 (금)
+  - 발표
+
+
+
+
+
+
 
