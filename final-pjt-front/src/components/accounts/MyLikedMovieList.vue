@@ -1,11 +1,12 @@
 <template>
   <div>
     <section>
-      <b-card-group row row-cols-2 row-cols-md-2 g-4>
+      <b-card-group  row row-cols-2 row-cols-md-2 g-4>
         <MovieCard
           v-for="(movie, idx) in movies"
           :key="idx"
           :movie="movie"
+          class="mymovie-background"
         />
       </b-card-group>
     </section>
@@ -32,5 +33,4 @@ export default {
 </script>
 
 <style>
-
 </style>

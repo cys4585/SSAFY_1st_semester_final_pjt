@@ -14,7 +14,7 @@ export default {
 
 <style>
 .mypage-background {
-  background-image: url('./mypage.jpg');
+  background-color: black;
   background-size: 100%;
   height: 1200px;
 }
