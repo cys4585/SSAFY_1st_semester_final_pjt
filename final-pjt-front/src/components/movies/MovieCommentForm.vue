@@ -79,9 +79,9 @@ export default {
   margin-right: 10px;
 }
 .moviecomment-button {
-  background-color: black;
+  background-color: white;
   border-color: blueviolet;
-  color: aliceblue;
+  color: black;
 }
 .margin-test {
   margin-top: 300px;
