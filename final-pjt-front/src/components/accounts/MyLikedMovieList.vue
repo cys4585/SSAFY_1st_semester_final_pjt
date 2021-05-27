@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>LikedMovieList.vue</h3>
     <section>
       <b-card-group row row-cols-2 row-cols-md-2 g-4>
         <MovieCard
