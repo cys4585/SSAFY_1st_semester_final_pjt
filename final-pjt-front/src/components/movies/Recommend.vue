@@ -169,7 +169,7 @@ export default {
   margin-top: 30px;
   margin-bottom: 800px;
   margin-left: 500px;
-  
+
 }
 
 .recommend-card {
