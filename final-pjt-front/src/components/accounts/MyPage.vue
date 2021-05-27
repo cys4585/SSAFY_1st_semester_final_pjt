@@ -1,7 +1,15 @@
 <template>
   <div class="mypage-background">
-    <button class="btn signout-button"><router-link :to="{ name: 'Signout' }" class="text-decoration-none text-light">Sign Out</router-link></button>
-    <button class="btn mymovie-button"><router-link :to="{ name: 'MyMovieList' }" class="text-decoration-none text-light">내 보관함</router-link></button>
+    <button class="btn signout-button">
+      <router-link :to="{ name: 'Signout' }" class="text-decoration-none text-light">
+        Sign Out
+      </router-link>
+    </button>
+    <button class="btn mymovie-button">
+      <router-link :to="{ name: 'MyMovieList' }" class="text-decoration-none text-light">
+        내 보관함
+      </router-link>
+    </button>
     <router-view/>
   </div>
 </template>
