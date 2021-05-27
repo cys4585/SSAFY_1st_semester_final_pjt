@@ -15,6 +15,7 @@ import PostDetail from '@/components/community/PostDetail.vue'
 import Account from '@/views/Account.vue'
 import MyPage from '@/components/accounts/MyPage.vue'
 import Signup from '@/components/accounts/Signup.vue'
+import Signout from '@/components/accounts/Signout.vue'
 import Login from '@/components/accounts/Login.vue'
 import LikeMovieList from '@/components/accounts/LikeMovieList.vue'
 
@@ -52,7 +53,8 @@ const routes = [
       { path: 'login', name: 'Login', component: Login, meta: { authRequired: false }, },
       { path: 'mypage', name: 'MyPage', component: MyPage, meta: { authRequired: true }, 
         children: [
-          { path: 'mymovielist', name: 'LikeMovieList', component: LikeMovieList, }
+          { path: 'mymovielist', name: 'LikeMovieList', component: LikeMovieList, },
+          { path: 'signout', name: 'Signout', component: Signout, },
         ]
       },
     ],

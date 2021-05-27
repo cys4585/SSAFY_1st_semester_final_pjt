@@ -104,11 +104,15 @@
 
   - 댓글 수정, Movie Comment 한 계정당 하나씩만 달 수 있도록 
   - My page 
+  - 회원탈퇴
+  - Post Comment 수정
   - 댓글 평점 별 / 추천 카드 css 구현 / 무비리스트 filtering sorting css / My page css
 
 - 0527 (목)
 
-  - 인피니티 스크롤, ppt 및 발표준비
+  - Like Movie List, Commented Movie List
+  - 인피니티 스크롤
+  - ppt 및 발표준비
 
 - 0528 (금)
 

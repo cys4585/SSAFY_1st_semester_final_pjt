@@ -11,7 +11,6 @@
     </ul>
     <button @click="getRecommendedMovieFromServer" class="btn btn-primary">recommend!</button>
     <div @click="goMovieDetail(movie.id)">
-
       <p>{{movie.title}}</p>
       <p>{{movie.overview}}</p>
     </div>

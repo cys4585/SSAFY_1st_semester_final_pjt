@@ -101,6 +101,11 @@ export default new Vuex.Store({
     CREATE_POST_COMMENT: function (state, comment) {
       state.postComments.push(comment)
     },
+    UPDATE_POST_COMMENT: function (state, comment) {
+      // console.log('mutation')
+      const idx = state.postComments.findIndex(postComment => postComment.id === comment.id)
+      state.postComments.splice(idx, 1, comment)
+    },
     SET_POST_LIKE_STATUS: function (state, likeStatus) {
       state.postLikeStatus = likeStatus.liked
       state.postLikeCount = likeStatus.count
@@ -150,6 +155,26 @@ export default new Vuex.Store({
       localStorage.removeItem('jwt')
       commit('SET_USERNAME', null)
       router.push({ name: 'Login' })
+    },
+    signout: function ({ commit }, password) {
+      axios({
+        method: 'delete',
+        url: 'http://127.0.0.1:8000/accounts/user/',
+        data: {
+          password,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(() => {
+          localStorage.removeItem('jwt')
+          commit('SET_USERNAME', null)
+          router.push({ name: 'Login' })
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     getMoviesFromServer: function ({ commit }) {
       console.log('getMoviesFromServer() 실행')
@@ -403,6 +428,25 @@ export default new Vuex.Store({
         .then(res => {
           // console.log(res.data)
           commit('CREATE_POST_COMMENT', res.data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    updatePostComment: function ({ commit }, { postId, commentId, content }) {
+      axios({
+        method: 'put',
+        url: `http://127.0.0.1:8000/community/${postId}/comment/${commentId}/`,
+        data: {
+          content,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          // console.log(res.data)
+          commit('UPDATE_POST_COMMENT', res.data)
         })
         .catch(err => {
           console.log(err)

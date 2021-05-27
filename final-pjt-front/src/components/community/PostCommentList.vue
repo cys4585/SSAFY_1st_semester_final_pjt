@@ -1,11 +1,11 @@
 <template>
   <div>
-    <table class="table table-hover moviecomment-line-color">
+    <table class="table moviecomment-line-color">
       <thead>
         <tr class="moviecomment-line-color">
           <th scope="col"></th>
+          <th scope="col"  style="width: 100%;"></th>
           <th scope="col"></th>
-          <!-- class="post" 좋아요 수 <th scope="col">Likes</th> -->
         </tr>
       </thead>
       <tbody class="post">

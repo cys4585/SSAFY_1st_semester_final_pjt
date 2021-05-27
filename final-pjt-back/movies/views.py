@@ -1,16 +1,15 @@
 from django.shortcuts import get_list_or_404, render, get_object_or_404
 from django.http import JsonResponse
 
-from rest_framework import serializers, status
+from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.views import APIView
 from .models import Genre, Movie, MovieComment
 from .serializers import MovieSerializer, MovieCommentSerializer
 from rest_framework.decorators import api_view
 
 from rest_framework.decorators import authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 import random
 
@@ -150,5 +149,11 @@ def recommend_movie(request):
                 serializer = MovieSerializer(rec_movie)
                 # print(type(serializer.data))
                 return Response(serializer.data, status=status.HTTP_200_OK)
-                
+        else:
+            movies = Movie.objects.all()
+            idx = random.randint(0, movies.count() - 1)
+            rec_movie = movies[idx]
+            serializer = MovieSerializer(rec_movie)
+            # print(type(serializer.data))
+            return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_204_NO_CONTENT)
