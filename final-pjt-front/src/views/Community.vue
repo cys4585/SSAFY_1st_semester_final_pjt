@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="postlist-background">
     <!-- <h1>Community Page</h1>
     |
     <router-link :to="{ name: 'PostList' }">PostList</router-link> | -->
@@ -17,5 +17,9 @@ export default {
 </script>
 
 <style>
-
+.postlist-background {
+  background-image: url('./mypage.jpg');
+  background-size: 100%;
+  height: 900px;
+}
 </style>

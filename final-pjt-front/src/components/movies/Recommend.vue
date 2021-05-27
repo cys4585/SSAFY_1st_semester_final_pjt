@@ -66,7 +66,7 @@
               @click="goMovieDetail(movie.id)" 
               data-bs-dismiss="modal"
             >
-              더보기
+              상세보기
             </button>
             <button 
               type="button" id="submitButton"
@@ -165,7 +165,7 @@ export default {
   margin-top: 30px;
   margin-bottom: 800px;
   margin-left: 500px;
-  
+
 }
 
 .recommend-card {

@@ -23,9 +23,9 @@ export default {
   margin-top: 40px;
   margin-right: 30px;
   color: aliceblue;
-  background-color: black;
-
+  border-color: rgb(190, 190, 190);
 }
+
 .mymovie-button{
   border-color: blueviolet;
   margin-left: 60px;

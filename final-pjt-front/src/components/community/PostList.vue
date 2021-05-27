@@ -1,9 +1,10 @@
 <template>
-  <div class="container postlist-margin">
-    <h2 class="community-title">COMMUNITY</h2>
+<div class="postlist-background">
+  <div class="container">
+    <!-- <h2 class="community-title postlist-margin">COMMUNITY</h2> -->
     <!-- <h2>PostList.vue</h2> -->
     
-    <button class="btn community-post-button" @click="postForm">글쓰기</button>
+    <button class="btn postlist-margin community-post-button" @click="postForm">글쓰기</button>
     <table class="table post-list">
       <thead>
         <tr>
@@ -23,6 +24,7 @@
     </table>
 
   </div>
+</div>
 </template>
 
 <script>
@@ -47,9 +49,7 @@ export default {
 </script>
 
 <style>
-.postlist-margin {
-  margin-top: 50px;
-}
+
 .community-title {
   color: rgba(240, 248, 255, 0.911);
 }
@@ -63,6 +63,6 @@ export default {
   color: aliceblue;
   float: right;
   margin-bottom: 10px;
-  margin-top: 80px;
+  margin-top: 150px;
 }
 </style>

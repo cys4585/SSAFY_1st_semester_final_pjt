@@ -1,5 +1,5 @@
 <template>
-  <div id="navb">
+  <div>
     <button class="btn mylist-like" @click="toggleLikeMoviesBtn">찜한 영화s</button>
     <button class="btn mylist-review" @click="toggleCommentMoviesBtn">본 영화s</button>
     <MyLikedMovieList
@@ -44,9 +44,7 @@ export default {
 </script>
 
 <style>
-#nab a {
-  color: #775aad;
-}
+
 .mylist-like {
   margin-left: 60px;
 
