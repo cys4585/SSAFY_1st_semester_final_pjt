@@ -31,7 +31,7 @@ const routes = [
     path: '/movies', component: Movie,
     meta: { authRequired: true },
     children: [
-      { path: '', name: 'MovieList', component: MovieList },
+      { path: 'movielist', name: 'MovieList', component: MovieList },
       { path: 'recommend', name: 'Recommend', component: Recommend, },
       { path: ':movieId', name: 'MovieDetail', component: MovieDetail },
     ],

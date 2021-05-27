@@ -80,21 +80,17 @@ export default {
       type: Number
     },
   },
-  created: function () {
-    this.comment = this.oldComment.comment
-    this.score = this.oldComment.score
-  },
   mounted: function () {
     this.onCloseForm()
   },
   computed: {
     oldComment: function () {
       // console.log('computed:', this.$store.state.editMovieComment)
-      return this.$store.state.editMovieComment
+      return this.$store.getters.getEditMovieComment
     },
     editActive: function () {
       // console.log('computed:', this.$store.state.movieCommentEditActive)
-      return this.$store.state.movieCommentEditActive
+      return this.$store.getters.movieCommentEditActive
     },
   },
   watch: {
@@ -103,12 +99,23 @@ export default {
       this.comment = this.oldComment.comment
       this.score = this.oldComment.score
       // console.log(this.comment, this.score)
+    },
+    oldComment: function () {
+      if (this.oldComment) {
+        this.comment = this.oldComment.comment
+        this.score = this.oldComment.score
+      }
     }
   },
   methods: {
     updateMovieComment: function () {
-      console.log('asdasdasdasdasd')
-      this.$store.dispatch('updateMovieComment', { movieId: this.movieId, commentId: this.commentId, score: this.score, comment: this.comment })
+      // console.log('asdasdasdasdasd')
+      this.$store.dispatch('updateMovieComment', {
+         movieId: this.movieId, 
+         commentId: this.commentId, 
+         score: this.score, 
+         comment: this.comment
+      })
     },
     clickSubmitButton: function () {
       document.getElementById(`submitButton${this.commentId}`).click()

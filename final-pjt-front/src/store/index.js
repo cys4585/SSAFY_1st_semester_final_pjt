@@ -48,7 +48,28 @@ export default new Vuex.Store({
       return function (commentId) {
         return state.movieComments.find(comment => comment.id === commentId)
       }
-    }
+    },
+    getMovie: function (state) {
+      return state.movie
+    },
+    getMovieLikeStatus: function (state) {
+      return state.movieLikeStatus
+    },
+    getMovieLikeCount: function (state) {
+      return state.movieLikeCount
+    },
+    getRecommendedMovie: function (state) {
+      return state.recommendedMovie
+    },
+    getMovieComments: function (state) {
+      return state.movieComments
+    },
+    getEditMovieComment: function (state) {
+      return state.editMovieComment
+    },
+    getMovieCommentEditActive: function (state) {
+      return state.movieCommentEditActive
+    },
   },
   mutations: {
     SET_USERNAME: function (state, username) {
@@ -138,6 +159,7 @@ export default new Vuex.Store({
     },
     SET_RECOMMENDED_MOVIE: function (state, movie) {
       state.recommendedMovie = movie
+      // console.log('mutation: ', state.recommendedMovie)
     },
   },
   actions: {
@@ -598,7 +620,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          // console.log(res.data)
+          // console.log('actions:', res.data)
           commit('SET_RECOMMENDED_MOVIE', res.data)
         })
         .catch(err => {
