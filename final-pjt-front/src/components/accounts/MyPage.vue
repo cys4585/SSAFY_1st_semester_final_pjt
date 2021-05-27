@@ -27,6 +27,7 @@ export default {
 
 }
 .mymovie-button{
+  border-color: blueviolet;
   margin-left: 60px;
   margin-top: 40px;
   font-size: 25px;
