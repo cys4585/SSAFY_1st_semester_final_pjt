@@ -2,178 +2,77 @@
   <div class="container">
     <br>
       <h2 class="recommend-h2-title">카드 한장을 골라보세요</h2>
-      <!-- <ul>
-        <li>회원이 좋아요한 MovieList에서 하나 random 추천</li>
-        <li>장르별 각 하나씩 random 추천</li>
-        <li>filter 기능으로 소거 방식으로 movies 추천 -> movies에서 하는게 좋을 듯</li>
-      </ul>
-      <ul>
-        <li>1. 평점을 준 영화 모두 얻어오기</li>
-      </ul>
-      <button @click="getRecommendedMovieFromServer" class="btn btn-primary">Recommend!</button>
-      <div @click="goMovieDetail(movie.id)">
-        <p>{{movie.posterpath}}</p>
-        <p>{{movie.title}}</p>
-        <img :src="srcUrl" alt="recommend" />
-      </div> -->
 
-
-      <!-- 카드1 -->
     <div class="recommend-carddeck">
-      <button @click="getRecommendedMovieFromServer" class="btn recommend-card" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="./tarot.jpg" class="recommend-tarot" alt=""></button>
-      <div class="modal fade recommend-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-
-            <div class="modal-header recommend-modal-background">
-              <h5 class="modal-title recommend-modal-title" id="exampleModalLabel">이 영화를 추천합니다!</h5>
-              <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div @click="goMovieDetail(movie.id)" class="modal-body recommend-modal-body">
-              <img :src="srcUrl" class="recommend-poster" alt="recommend" />
-              <div>
-                <p id="recommendmovie-title">{{movie.title}}</p>
-                <p>개봉일: {{movie.release_date}}</p>
-                <p>평점: {{movie.vote_average}}</p>
-                <p>인기: {{movie.popularity}}</p>
-                <p>투표수: {{movie.vote_count}}</p>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button class="btn recommend-movie-detail-button">더보기</button>
-              <button type="button" id="submitButton" @click="createMovieComment" class="btn movierecommend-button" data-bs-dismiss="modal">취소</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <!-- 카드1 -->  
+      <button 
+        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >
+        <img src="./tarot.jpg" class="recommend-tarot" alt="">
+      </button>
       <!-- 카드2 -->
-      <button @click="getRecommendedMovieFromServer" class="btn recommend-card" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="./tarot.jpg" class="recommend-tarot" alt=""></button>
-      <div class="modal fade recommend-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <div class="modal-header recommend-modal-background">
-              <h5 class="modal-title recommend-modal-title" id="exampleModalLabel">이 영화를 추천합니다!</h5>
-              <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div @click="goMovieDetail(movie.id)" class="modal-body recommend-modal-body">
-              <img :src="srcUrl" class="recommend-poster" alt="recommend" />
-              <div>
-                <p id="recommendmovie-title">{{movie.title}}</p>
-                <p>개봉일: {{movie.release_date}}</p>
-                <p>평점: {{movie.vote_average}}</p>
-                <p>인기: {{movie.popularity}}</p>
-                <p>투표수: {{movie.vote_count}}</p>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button class="btn recommend-movie-detail-button">더보기</button>
-              <button type="button" id="submitButton" @click="createMovieComment" class="btn movierecommend-button" data-bs-dismiss="modal">취소</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <button 
+        @click="getRecommendedMovieFromServer" class="btn recommend-card"
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >
+        <img src="./tarot.jpg" class="recommend-tarot" alt="">
+      </button>
       <!-- 카드3 -->
-      <button @click="getRecommendedMovieFromServer" class="btn recommend-card" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="./tarot.jpg" class="recommend-tarot" alt=""></button>
-      <div class="modal fade recommend-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <div class="modal-header recommend-modal-background">
-              <h5 class="modal-title recommend-modal-title" id="exampleModalLabel">이 영화를 추천합니다!</h5>
-              <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div @click="goMovieDetail(movie.id)" class="modal-body recommend-modal-body">
-              <img :src="srcUrl" class="recommend-poster" alt="recommend" />
-              <div>
-                <p id="recommendmovie-title">{{movie.title}}</p>
-                <p>개봉일: {{movie.release_date}}</p>
-                <p>평점: {{movie.vote_average}}</p>
-                <p>인기: {{movie.popularity}}</p>
-                <p>투표수: {{movie.vote_count}}</p>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button class="btn recommend-movie-detail-button">더보기</button>
-              <button type="button" id="submitButton" @click="createMovieComment" class="btn movierecommend-button" data-bs-dismiss="modal">취소</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <button 
+        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >
+        <img src="./tarot.jpg" class="recommend-tarot" alt="">
+      </button>
       <!-- 카드4 -->
-      <button @click="getRecommendedMovieFromServer" class="btn recommend-card" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="./tarot.jpg" class="recommend-tarot" alt=""></button>
-      <div class="modal fade recommend-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <div class="modal-header recommend-modal-background">
-              <h5 class="modal-title recommend-modal-title" id="exampleModalLabel">이 영화를 추천합니다!</h5>
-              <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div @click="goMovieDetail(movie.id)" class="modal-body recommend-modal-body">
-              <img :src="srcUrl" class="recommend-poster" alt="recommend" />
-              <div>
-                <p id="recommendmovie-title">{{movie.title}}</p>
-                <p>개봉일: {{movie.release_date}}</p>
-                <p>평점: {{movie.vote_average}}</p>
-                <p>인기: {{movie.popularity}}</p>
-                <p>투표수: {{movie.vote_count}}</p>
-              </div>
-            </div>
-
-            <div class="modal-footer">
-              <button class="btn recommend-movie-detail-button">더보기</button>
-              <button type="button" id="submitButton" @click="createMovieComment" class="btn movierecommend-button" data-bs-dismiss="modal">취소</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <button 
+        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >
+        <img src="./tarot.jpg" class="recommend-tarot" alt="">
+      </button>
       <!-- 카드5 -->
-      <button @click="getRecommendedMovieFromServer" class="btn recommend-card" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="./tarot.jpg" class="recommend-tarot" alt=""></button>
-      <div class="modal fade recommend-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-          
-            <div class="modal-header recommend-modal-background">
-              <h5 class="modal-title recommend-modal-title" id="exampleModalLabel">이 영화를 추천합니다!</h5>
-              <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
+      <button 
+        @click="getRecommendedMovieFromServer" class="btn recommend-card" 
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+      >
+        <img src="./tarot.jpg" class="recommend-tarot" alt="">
+      </button>   
+    </div>
+    <div class="modal fade recommend-modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <div class="modal-header recommend-modal-background">
+            <h5 class="modal-title recommend-modal-title" id="exampleModalLabel">이 영화를 추천합니다!</h5>
+            <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
 
-            <div @click="goMovieDetail(movie.id)" class="modal-body recommend-modal-body">
-              <img :src="srcUrl" class="recommend-poster" alt="recommend" />
-              <div>
-                <p id="recommendmovie-title">{{movie.title}}</p>
-                <p>개봉일: {{movie.release_date}}</p>
-                <p>평점: {{movie.vote_average}}</p>
-                <p>인기: {{movie.popularity}}</p>
-                <p>투표수: {{movie.vote_count}}</p>
-              </div>
+          <div class="modal-body recommend-modal-body">
+            <img :src="srcUrl" class="recommend-poster" alt="recommend" />
+            <div>
+              <p id="recommendmovie-title">{{movie.title}}</p>
+              <p>개봉일: {{movie.release_date}}</p>
+              <p>평점: {{movie.vote_average}}</p>
+              <p>인기: {{movie.popularity}}</p>
+              <p>투표수: {{movie.vote_count}}</p>
             </div>
+          </div>
 
-            <div class="modal-footer">
-              <button class="btn recommend-movie-detail-button">더보기</button>
-              <button type="button" id="submitButton" @click="createMovieComment" class="btn movierecommend-button" data-bs-dismiss="modal">취소</button>
-            </div>
+          <div class="modal-footer">
+            <button class="btn recommend-movie-detail-button">더보기</button>
+            <button 
+              type="button" id="submitButton"
+              class="btn movierecommend-button" data-bs-dismiss="modal"
+            >
+              취소
+            </button>
           </div>
         </div>
       </div>
-      
     </div>
   </div>
-
-
-  
 </template>
 
 <script>
@@ -182,7 +81,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Recommend',
   methods: {
-    ...mapActions(['goMovieDetail', 'getRecommendedMovieFromServer']),
+    ...mapActions(['getRecommendedMovieFromServer']),
   },
   computed: {
     movie: function () {
