@@ -568,7 +568,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           commit('SET_RECOMMENDED_MOVIE', res.data)
         })
         .catch(err => {

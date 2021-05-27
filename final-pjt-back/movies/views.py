@@ -151,7 +151,7 @@ def recommend_movie(request):
                 # print(type(serializer.data))
                 return Response(serializer.data, status=status.HTTP_200_OK)
         else:
-            movies = Movie.objects.all()
+            movies = Movie.objects.filter(vote_average__gte=8)
             idx = random.randint(0, movies.count() - 1)
             rec_movie = movies[idx]
             serializer = MovieSerializer(rec_movie)
