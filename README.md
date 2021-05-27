@@ -10,7 +10,7 @@
 
 ## 2. ERD (Model)
 
-![image-20210520211252198](README.assets/image-20210520211252198.png)
+![image-20210528002222891](README.assets/image-20210528002222891.png)
 
 
 
@@ -18,52 +18,54 @@
 
 1. movies app
 
-| HTTP verb  | URL 패턴                                | 설명                                  |
-| ---------- | --------------------------------------- | ------------------------------------- |
-| GET        | movies/                                 | 전체 영화 목록 조회 페이지            |
-| GET        | movies/recommend/                       | 영화 추천 페이지                      |
-| GET        | movies/<movie_id>/                      | 영화 상세(detail) 페이지              |
-| GET & POST | movies/<movie_id>/likes/                | 좋아요 상태 조회 / 영화 좋아요 / 취소 |
-| GET & POST | movies/<movie_id>/comment/              | 영화 댓글 조회 / 영화 댓글 생성       |
-| PUT        | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 수정                        |
-| DELETE     | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 삭제                        |
+| HTTP verb | URL 패턴                                | 설명                 |
+| --------- | --------------------------------------- | -------------------- |
+| GET       | movies/                                 | 전체 영화 목록 조회  |
+| GET       | movies/recommend/                       | 추천 영화 조회       |
+| GET       | movies/<movie_id>/                      | 단일 영화 조회       |
+| GET       | movies/<movie_id>/likes/                | 좋아요 상태 조회     |
+| POST      | movies/<movie_id>/likes/                | 영화 좋아요 / 취소   |
+| GET       | movies/<movie_id>/comment/              | 영화 댓글 조회       |
+| POST      | movies/<movie_id>/comment/              | 영화 댓글 생성       |
+| PUT       | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 수정       |
+| DELETE    | movies/<movie_id>/comment/<comment_id>/ | 영화 댓글 삭제       |
+| GET       | movies/liked/                           | 좋아요한 영화들 조회 |
+| GET       | movies/commented/                       | 댓글단 영화들 조회   |
 
 
 
 2. community app
 
-| HTTP verb  | URL 패턴                                  | 설명                         |
-| ---------- | ----------------------------------------- | ---------------------------- |
-| GET        | community/                                | 전체 게시글 목록 조회 페이지 |
-| POST       | community/                                | 게시글 생성                  |
-| GET        | community/<post_id>/                      | 게시글 상세(detail) 페이지   |
-| PUT        | community/<post_id>/                      | 게시글 수정                  |
-| DELETE     | community/<post_id>/                      | 게시글 삭제                  |
-| POST       | community/<post_id>/likes/                | 게시글 좋아요 / 취소         |
-| GET & POST | community/<post_id>/comment/              | 게시글 댓글 조회 / 댓글 생성 |
-| PUT        | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
-| DELETE     | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
+| HTTP verb | URL 패턴                                  | 설명                         |
+| --------- | ----------------------------------------- | ---------------------------- |
+| GET       | community/                                | 전체 게시글 목록 조회 페이지 |
+| POST      | community/                                | 게시글 생성                  |
+| PUT       | community/<post_id>/                      | 게시글 수정                  |
+| DELETE    | community/<post_id>/                      | 게시글 삭제                  |
+| GET       | community/<post_id>/comment/              | 게시글 댓글들 조회           |
+| POST      | community/<post_id>/comment/              | 새 댓글 생성                 |
+| GET       | community/<post_id>/likes/                | 좋아요 상태 조회             |
+| POST      | community/<post_id>/likes/                | 게시글 좋아요 / 취소         |
+| PUT       | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 수정             |
+| DELETE    | community/<post_id>/comment/<comment_id>/ | 게시글 댓글 삭제             |
 
 
 
 3. Accounts
 
-| HTTP verb | URL 패턴                 | 설명                          |
-| --------- | ------------------------ | ----------------------------- |
-| POST      | accounts/signup/         | 회원 가입                     |
-| POST      | accounts/api-token-auth/ | 로그인 (JWT 얻기)             |
-| -----     | -----                    | JWT 갱신 (공부해야함)         |
-| GET       | accounts/<user_name>/    | 회원 정보 상세(detail) 페이지 |
-| PUT       | accounts/<user_name>/    | 회원 정보 수정                |
-| DELETE    | accounts/<user_name>/    | 회원 탈퇴                     |
+| HTTP verb | URL 패턴                 | 설명              |
+| --------- | ------------------------ | ----------------- |
+| POST      | accounts/signup/         | 회원 가입         |
+| POST      | accounts/api-token-auth/ | 로그인 (JWT 얻기) |
+| DELETE    | accounts/user/           | 회원 탈퇴         |
+
+
 
 
 
 ## 4. 컴포넌트 구조
 
-![image-20210524085945844](README.assets/image-20210524085945844.png)
-
-
+![컴포넌트](README.assets/컴포넌트.png)
 
 
 

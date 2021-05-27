@@ -49,7 +49,7 @@
             <button type="button" class="btn-close recommend-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
-          <div class="modal-body recommend-modal-body">
+          <div v-if="movie" class="modal-body recommend-modal-body">
             <img :src="srcUrl" class="recommend-poster" alt="recommend" />
             <div>
               <p id="recommendmovie-title">{{movie.title}}</p>
@@ -66,7 +66,7 @@
               @click="goMovieDetail(movie.id)" 
               data-bs-dismiss="modal"
             >
-              더보기
+              상세보기
             </button>
             <button 
               type="button" id="submitButton"
@@ -91,13 +91,17 @@ export default {
   },
   computed: {
     movie: function () {
-      return this.$store.state.recommendedMovie
+      return this.$store.getters.getRecommendedMovie
     },
     srcUrl: function () {
-      // console.log(this.movie.poster_path)
       return 'https://image.tmdb.org/t/p/w500' + this.movie.poster_path
     }
   },
+  created: function () {
+    // console.log('get recommended movie')
+    this.getRecommendedMovieFromServer()
+    // console.log(this.movie)
+  }
 }
 </script>
 

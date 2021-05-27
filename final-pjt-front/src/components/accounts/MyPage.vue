@@ -7,7 +7,7 @@
     </button>
     <button class="btn mymovie-button">
       <router-link :to="{ name: 'MyMovieList' }" class="text-decoration-none text-light">
-        내 보관함
+        My Movies
       </router-link>
     </button>
     <router-view/>

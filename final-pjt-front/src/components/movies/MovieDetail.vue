@@ -1,6 +1,6 @@
 <template>
   <div class="container moviedetail">
-    <div class="moviedetail-margin">
+    <div v-if="movie" class="moviedetail-margin">
       <!-- 포스터 -->
       <div class="movieposter">
         <img :src="srcUrl" alt="movieposter" class="movieposter-img">
@@ -67,13 +67,13 @@ export default {
   },
   computed: {
     movie: function () {
-      return this.$store.state.movie
+      return this.$store.getters.getMovie
     },
     isLike: function () {
-      return this.$store.state.movieLikeStatus
+      return this.$store.getters.getMovieLikeStatus
     },
     likeCount: function () {
-      return this.$store.state.movieLikeCount
+      return this.$store.getters.getMovieLikeCount
     },
     srcUrl: function () {
       // console.log(this.movie.poster_path)
@@ -83,9 +83,11 @@ export default {
   watch: {
     isLike: function () {
       const likeButton = document.getElementById('like-button')
-      const childTag = likeButton.children[0]
-      const val = this.isLike ? 'fas fa-heart' : 'far fa-heart'
-      childTag.setAttribute('class', val)
+      if (likeButton.children.length !== 0) {
+        const childTag = likeButton.children[0]
+        const val = this.isLike ? 'fas fa-heart' : 'far fa-heart'
+        childTag.setAttribute('class', val)
+      } 
     },
   },
   methods: {

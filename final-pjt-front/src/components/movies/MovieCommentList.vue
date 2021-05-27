@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     commentList: function () {
-      return this.$store.state.movieComments
+      return this.$store.getters.getMovieComments
     }
   },
 }

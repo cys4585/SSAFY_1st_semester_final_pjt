@@ -25,6 +25,7 @@
           </button>
         </span>    
         <MovieCommentUpdateForm 
+          v-if="Object.keys(comment).length !== 0"
           :movieId="Number(this.$route.params.movieId)"
           :commentId="comment.id"
         />   
@@ -46,6 +47,7 @@ export default {
   props: {
     comment: {
       type: Object,
+      required: true,
     },
     movieId: {
       type: Number,
@@ -59,8 +61,8 @@ export default {
       this.$store.dispatch('deleteMovieComment', {movieId: this.movieId, commentId: this.comment.id})
     },
     openEditForm: function () {
-      console.log('open Edit Form')
-      console.log(this.comment.id)
+      // console.log('open Edit Form')
+      // console.log(this.comment.id)
       this.$store.dispatch('openMovieCommentEditForm', this.comment)
     },
   }
