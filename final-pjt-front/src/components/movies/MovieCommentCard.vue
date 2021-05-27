@@ -13,6 +13,7 @@
             data-bs-toggle="modal" 
             :data-bs-target="'#movieCommentUpdateModal'+comment.id" 
             data-bs-whatever="@mdo"
+            @click="openEditForm"
             >
               수정
             </button>
@@ -25,7 +26,7 @@
         </span>    
         <MovieCommentUpdateForm 
           :movieId="Number(this.$route.params.movieId)"
-          :oldComment="comment"
+          :commentId="comment.id"
         />   
       </div>
     </th>
@@ -50,12 +51,20 @@ export default {
       type: Number,
     }
   },
+  created: function () {
+    console.log(this.comment.id)
+  },
   computed: {
     ...mapState(['loginUsername']),
   },
   methods: {
     deleteComment: function () {
       this.$store.dispatch('deleteMovieComment', {movieId: this.movieId, commentId: this.comment.id})
+    },
+    openEditForm: function () {
+      console.log('open Edit Form')
+      console.log(this.comment.id)
+      this.$store.dispatch('openMovieCommentEditForm', this.comment)
     },
   }
 

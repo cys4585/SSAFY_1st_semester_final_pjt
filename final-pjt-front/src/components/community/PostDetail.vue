@@ -51,6 +51,14 @@ export default {
       return this.$store.state.postLikeCount
     }
   },
+  watch: {
+    isLike: function () {
+      const likeButton = document.getElementById('like-button')
+      const childTag = likeButton.children[0]
+      const val = this.isLike ? 'fas fa-heart' : 'far fa-heart'
+      childTag.setAttribute('class', val)
+    }
+  },
   methods: {
     postForm: function () {
       this.$router.push({ name: 'PostUpdateForm', params: { postId: this.post.id } })
@@ -60,10 +68,6 @@ export default {
     },
     postLike: function () {
       this.$store.dispatch('postLike', this.post.id)
-      const likeButton = document.getElementById('like-button')
-      const childTag = likeButton.children[0]
-      const val = this.isLike ? 'far fa-heart' : 'fas fa-heart'
-      childTag.setAttribute('class', val)
     }   
   },
 

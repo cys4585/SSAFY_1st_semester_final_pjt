@@ -14,6 +14,8 @@ export default new Vuex.Store({
     movies: null,
     movie: null,
     movieComments: [],
+    movieCommentEditActive: false,
+    editMovieComment: null,
     movieLikeStatus: null,
     movieLikeCount: null,
     recommendedMovie: null,
@@ -63,6 +65,15 @@ export default new Vuex.Store({
     CREATE_MOVIE_COMMENT: function (state, comment) {
       state.movieComments.push(comment)
     },
+    SET_EDIT_MOVIE_COMMENT: function (state, comment) {
+      // console.log('mutation:', state.editMovieComment.comment)
+      if (comment) {
+        state.movieCommentEditActive = true
+        state.editMovieComment = comment
+      } else {
+        state.movieCommentEditActive = false
+      }
+    },
     UPDATE_MOVIE_COMMENT: function (state, comment) {
       const idx = state.movieComments.findIndex(movieComment => movieComment.id === comment.id)
       // state.movieComments[idx] = comment
@@ -109,6 +120,7 @@ export default new Vuex.Store({
     SET_POST_LIKE_STATUS: function (state, likeStatus) {
       state.postLikeStatus = likeStatus.liked
       state.postLikeCount = likeStatus.count
+      // console.log('mutations', state.postLikeStatus)
     },
     DELETE_POST_COMMENT: function (state, commentId) {
       const idx = state.postComments.findIndex(comment => comment.id === commentId)
@@ -251,6 +263,12 @@ export default new Vuex.Store({
           console.log(err)
           // alert('댓글(평점)은 하나만 작성할 수 있습니다.')
         })
+    },
+    openMovieCommentEditForm: function ({ commit }, comment) {
+      commit('SET_EDIT_MOVIE_COMMENT', comment)
+    },
+    closeMovieCommentEditForm: function ({ commit }) {
+      commit('SET_EDIT_MOVIE_COMMENT', null)
     },
     updateMovieComment: function ({ commit }, { movieId, commentId, score, comment }) {
       axios({
@@ -461,7 +479,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
           commit('SET_POST_LIKE_STATUS', res.data)
         })
         .catch(err => {
