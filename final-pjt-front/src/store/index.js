@@ -11,7 +11,7 @@ export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
     loginUsername: null,
-    movies: null,
+    movies: [],
     movie: null,
     likedMovies: null,
     commentedMovies: null,
@@ -56,6 +56,9 @@ export default new Vuex.Store({
     },
     SET_MOVIES: function (state, movies) {
       state.movies = movies
+    },
+    UPDATE_MOVIES: function (state, movies) {
+      state.movies.push(...movies)
     },
     SET_MOVIE: function (state, movie) {
       state.movie = movie
@@ -225,11 +228,37 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    getMoviesFromServer: function ({ commit }) {
+    getMoviesFromServer: function ({ commit }, pageNum) {
       console.log('getMoviesFromServer() 실행')
       axios({
         method: 'get',
         url: 'http://127.0.0.1:8000/movies/',
+        params: {
+          pageNum,
+        },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem('jwt')}`
+        },
+      })
+        .then(res => {
+          console.log('first movies id: ', res.data[0].id)
+          if (pageNum === 1) {
+            commit('SET_MOVIES', res.data)
+          } else {
+            commit('UPDATE_MOVIES', res.data)
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    getFilteredSortedMovieListFromServer: function ({ commit }, filters) {
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/movies/`,
+        params: {
+          ...filters,
+        },
         headers: {
           Authorization: `JWT ${localStorage.getItem('jwt')}`
         },
@@ -575,26 +604,7 @@ export default new Vuex.Store({
           console.log(err)
         })
     },
-    getFilteredSortedMovieListFromServer: function ({ commit }, filters) {
-      axios({
-        method: 'get',
-        url: `http://127.0.0.1:8000/movies/`,
-        params: {
-          ...filters,
-          // voteaverage: filters.voteAverage,
-        },
-        headers: {
-          Authorization: `JWT ${localStorage.getItem('jwt')}`
-        },
-      })
-        .then(res => {
-          console.log(res.data)
-          commit('SET_MOVIES', res.data)
-        })
-        .catch(err => {
-          console.log(err)
-        })
-    },
+
   },
   modules: {
   }

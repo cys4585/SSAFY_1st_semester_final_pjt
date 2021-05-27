@@ -1,6 +1,6 @@
-from django.db.models.query import QuerySet
 from django.shortcuts import get_list_or_404, render, get_object_or_404
 from django.http import JsonResponse
+from django.core.paginator import Paginator
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -34,6 +34,7 @@ def movie_list(request):
             # print(len(movies))
     else:
         movies = Movie.objects.all()
+
     # sorting (내림차순)
     if request.GET.get('sorter'):
         sorter = request.GET.get('sorter')
@@ -46,6 +47,16 @@ def movie_list(request):
         # 평점순
         elif sorter == 'rating':
             movies = movies.order_by('-vote_average')
+
+    if request.GET.get('pageNum'):
+        paginator = Paginator(movies, 15)
+        last_page = len(paginator.page_range)
+        page_number = int(request.GET.get('pageNum'))
+        if last_page < page_number:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        movies = paginator.get_page(page_number)
+        print(page_number)
+        print(movies)
     serializer = MovieSerializer(movies, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 

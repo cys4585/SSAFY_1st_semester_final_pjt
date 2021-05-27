@@ -61,7 +61,13 @@
           </div>
 
           <div class="modal-footer">
-            <button class="btn recommend-movie-detail-button">더보기</button>
+            <button 
+              class="btn recommend-movie-detail-button" 
+              @click="goMovieDetail(movie.id)" 
+              data-bs-dismiss="modal"
+            >
+              더보기
+            </button>
             <button 
               type="button" id="submitButton"
               class="btn movierecommend-button" data-bs-dismiss="modal"
@@ -81,7 +87,7 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Recommend',
   methods: {
-    ...mapActions(['getRecommendedMovieFromServer']),
+    ...mapActions(['getRecommendedMovieFromServer', 'goMovieDetail']),
   },
   computed: {
     movie: function () {
