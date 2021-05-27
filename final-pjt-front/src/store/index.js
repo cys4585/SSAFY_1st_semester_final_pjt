@@ -229,7 +229,7 @@ export default new Vuex.Store({
         })
     },
     getMoviesFromServer: function ({ commit }, pageNum) {
-      console.log(pageNum)
+      // console.log(pageNum)
       // console.log('getMoviesFromServer() 실행')
       axios({
         method: 'get',
