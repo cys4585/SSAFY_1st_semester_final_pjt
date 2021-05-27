@@ -18,8 +18,6 @@ export default {
 
 <style>
 .postlist-background {
-  background-image: url('./mypage.jpg');
-  background-size: 100%;
-  height: 900px;
+  background-color: black;
 }
 </style>
