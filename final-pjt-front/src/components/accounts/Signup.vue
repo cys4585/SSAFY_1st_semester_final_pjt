@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="account-signup-background">
     <div class="container col-sm-2" id="signup-background">
       <h1>Signup</h1>
         <div class="mb-3">
@@ -41,6 +41,13 @@ export default {
 </script>
 
 <style>
+.account-signup-background {
+  background-image: url('./snowstar.png');
+  background-size: 100%;
+  height: 1200px;
+  padding-top: 130px;
+  margin-top: 20px;
+}
 #signup-background {
   background-color: rgb(175, 175, 175, 0.7);
   color: black;

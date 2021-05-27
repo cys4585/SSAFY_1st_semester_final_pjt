@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="mb-3">
-      <h3>PostCommentForm.vue</h3>
       <input  v-model="comment" @keyup.enter="createPostComment" type="text" class="form-control d-inline postcommentform" id="formGroupExampleInput" placeholder="댓글을 작성해주세요.">
       <button @click="createPostComment" class="btn postcomment-button">작성</button>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- 탭 네브바 -->
-    <img class="movie-title" src="waterpurple2.jpg" alt="title">
+    <img class="movie-title" src="./assets/waterpurple.jpg" alt="title">
     <nav>
       <div id="nav">
         <span v-if="loginUsername">
@@ -50,15 +50,6 @@ export default {
   margin-right: 0;
   font-size: 20px;
 
-}
-
-#title {
-  margin-top: 50px;
-  margin-bottom: 0%;
-  font-size: 60px;
-  font-weight: 600;
-  color: rgb(122, 31, 162);
-  margin-left: 60px;
 }
 
 #nav {

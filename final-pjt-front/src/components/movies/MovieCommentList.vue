@@ -6,6 +6,7 @@
           <th scope="col">별점</th>
           <th scope="col">ID</th>
           <th scope="col">한줄평</th>
+          <th scope="col" class="comment-update-delete-button"></th>
           <!-- class="post" 좋아요 수 <th scope="col">Likes</th> -->
         </tr>
       </thead>
@@ -48,6 +49,10 @@ export default {
 
 <style>
 .moviecomment-line-color {
-  color: rgba(223, 238, 252, 0.781);
+  color: rgb(224, 224, 224);
+  font-weight: 100;
+}
+.comment-update-delete-button {
+  justify-content: end;
 }
 </style>

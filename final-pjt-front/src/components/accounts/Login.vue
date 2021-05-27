@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="accont-login-background">
     <div class="container col-sm-2" id="lgoin-background">
       <h1>Login</h1>
         <div class="mb-3">
@@ -39,7 +39,13 @@ export default {
 
 <style>
 
-
+.accont-login-background {
+  background-image: url('./snowstar.png');
+  background-size: 100%;
+  height: 1200px;
+  padding-top: 130px;
+  margin-top: 20px;
+}
 #lgoin-background {
   background-color: rgba(175, 175, 175, 0.7);
   color: black;

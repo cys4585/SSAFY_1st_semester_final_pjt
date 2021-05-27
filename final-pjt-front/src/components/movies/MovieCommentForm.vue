@@ -71,6 +71,9 @@ export default {
 </script>
 
 <style>
+.modal {
+  margin-top: 200px;
+}
 .moviecommentform {
   width: 90%;
   margin-right: 10px;

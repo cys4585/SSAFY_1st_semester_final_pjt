@@ -2,32 +2,33 @@
   <tr :id="'movie-comment'+comment.id">
     <th scope="row">{{ comment.score }}</th> 
     <th>{{ comment.username }}</th> 
-    <th>{{ comment.comment }}</th>
-    
-    <div v-if="loginUsername === comment.username" class="dropdown moviecomment-dropdown d-inline">
-      <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
-      <div class="dropdown-menu">
-        <button 
-          type="button" 
-          class="btn dropdown-item moviecomment-update-button" 
-          data-bs-toggle="modal" 
-          :data-bs-target="'#movieCommentUpdateModal'+comment.id" 
-          data-bs-whatever="@mdo"
-          >
-            수정
+    <th class="comment-update-delete-button">{{ comment.comment }}</th>
+    <th>
+      <div v-if="loginUsername === comment.username" class="dropdown moviecomment-dropdown d-inline">
+        <button class="btn moviecomment-dropdown-button" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></button>
+        <span class="dropdown-menu">
+          <button 
+            type="button" 
+            class="btn dropdown-item moviecomment-update-button" 
+            data-bs-toggle="modal" 
+            :data-bs-target="'#movieCommentUpdateModal'+comment.id" 
+            data-bs-whatever="@mdo"
+            >
+              수정
+            </button>
+          <button 
+            class="btn moviecomment-delete-button dropdown-item" 
+            @click="deleteComment"
+            >
+            삭제
           </button>
-        <button 
-          class="btn moviecomment-delete-button dropdown-item" 
-          @click="deleteComment"
-          >
-          삭제
-        </button>
-      </div>    
-      <MovieCommentUpdateForm 
-        :movieId="Number(this.$route.params.movieId)"
-        :oldComment="comment"
-      />   
-    </div>
+        </span>    
+        <MovieCommentUpdateForm 
+          :movieId="Number(this.$route.params.movieId)"
+          :oldComment="comment"
+        />   
+      </div>
+    </th>
   </tr>
   
 </template>
@@ -63,18 +64,23 @@ export default {
 
 <style>
 .moviecomment-dropdown-button {
-  color: aliceblue;
+  color: rgb(224, 224, 224);
+
 }
 .moviecomment-update-button {
   background-color: aliceblue;
   color: black;
+
 }
 .moviecomment-delete-button {
   background-color: aliceblue;
   color: black;
+
 }
 .dropdown-item {
   width: 70px;
 }
-
+.dropdown-menu {
+  width: 32px;
+}
 </style>

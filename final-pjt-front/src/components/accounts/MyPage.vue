@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h2>MyPage.vue</h2>
+  <div class="mypage-background">
     <ul>
       <li>회원 정보 detail</li>
       <li>회원정보 수정</li>
@@ -19,5 +18,9 @@ export default {
 </script>
 
 <style>
-
+.mypage-background {
+  background-image: url('./mypage.jpg');
+  background-size: 100%;
+  height: 1200px;
+}
 </style>
