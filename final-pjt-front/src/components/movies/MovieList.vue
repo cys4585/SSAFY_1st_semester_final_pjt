@@ -172,7 +172,7 @@ export default {
     },
     checkBottom: function () {
       const { scrollTop, clientHeight, scrollHeight } = document.documentElement
-      if (scrollHeight - scrollTop === clientHeight) {
+      if (parseInt(scrollHeight - scrollTop) === clientHeight) {
         this.getMovies()
       }
     }

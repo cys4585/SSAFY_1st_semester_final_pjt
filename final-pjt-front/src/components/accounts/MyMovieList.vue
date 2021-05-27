@@ -1,7 +1,7 @@
 <template>
   <div id="navb">
-    <button class="btn mylist-like" @click="toggleLikeMoviesBtn">좋아요 한 영화s</button>
-    <button class="btn mylist-review" @click="toggleCommentMoviesBtn">후기를 남긴 영화s</button>
+    <button class="btn mylist-like" @click="toggleLikeMoviesBtn">찜한 영화s</button>
+    <button class="btn mylist-review" @click="toggleCommentMoviesBtn">본 영화s</button>
     <MyLikedMovieList
       v-show="isShowLikeMovies"
     />

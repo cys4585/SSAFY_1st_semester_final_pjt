@@ -229,7 +229,8 @@ export default new Vuex.Store({
         })
     },
     getMoviesFromServer: function ({ commit }, pageNum) {
-      console.log('getMoviesFromServer() 실행')
+      console.log(pageNum)
+      // console.log('getMoviesFromServer() 실행')
       axios({
         method: 'get',
         url: 'http://127.0.0.1:8000/movies/',
@@ -241,7 +242,7 @@ export default new Vuex.Store({
         },
       })
         .then(res => {
-          console.log('first movies id: ', res.data[0].id)
+          // console.log('first movies id: ', res.data[0].id)
           if (pageNum === 1) {
             commit('SET_MOVIES', res.data)
           } else {
